@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+# Data: the PDFs are large and anyone can download them, so we don't commit them.
+data/raw/*.pdf
+data/processed/
+data/index/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store

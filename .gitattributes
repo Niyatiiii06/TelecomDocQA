@@ -1,0 +1,4 @@
+# Keep Unix line endings in the repo so the code behaves the same on
+# Windows, Linux (GitHub Actions) and Docker.
+* text=auto eol=lf
+*.pdf binary

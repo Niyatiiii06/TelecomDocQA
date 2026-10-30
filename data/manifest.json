@@ -1,0 +1,32 @@
+{
+  "documents": [
+    {
+      "doc_id": "ts_38300",
+      "file": "ts_38300.pdf",
+      "spec": "TS 38.300",
+      "title": "NR; NR and NG-RAN Overall description; Stage-2",
+      "topic": "radio_access"
+    },
+    {
+      "doc_id": "ts_23501",
+      "file": "ts_23501.pdf",
+      "spec": "TS 23.501",
+      "title": "System architecture for the 5G System (5GS)",
+      "topic": "architecture"
+    },
+    {
+      "doc_id": "ts_23502",
+      "file": "ts_23502.pdf",
+      "spec": "TS 23.502",
+      "title": "Procedures for the 5G System (5GS)",
+      "topic": "procedures"
+    },
+    {
+      "doc_id": "ts_33501",
+      "file": "ts_33501.pdf",
+      "spec": "TS 33.501",
+      "title": "Security architecture and procedures for 5G system",
+      "topic": "security"
+    }
+  ]
+}
