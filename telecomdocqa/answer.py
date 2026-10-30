@@ -50,6 +50,21 @@ def build_messages(question, chunks):
     ]
 
 
+def normalize_citations(text):
+    """Rewrite the different citation styles models use into plain [n].
+
+    gpt-oss often writes 【1】 (or 【1†L3-L5】) instead of [1], and some
+    models write [1, 2] instead of [1][2].
+    """
+    text = re.sub(r"【(\d+)[^】]*】", r"[\1]", text)
+    text = re.sub(
+        r"\[(\d+(?:\s*,\s*\d+)+)\]",
+        lambda match: "".join(f"[{n.strip()}]" for n in match.group(1).split(",")),
+        text,
+    )
+    return text
+
+
 def extract_citations(answer_text, chunks):
     """Find every [n] in the answer and match it to its source chunk.
 
@@ -65,6 +80,7 @@ def extract_citations(answer_text, chunks):
             citations.append({
                 "number": n,
                 "chunk_id": chunk["chunk_id"],
+                "doc_id": chunk["doc_id"],
                 "spec": chunk["spec"],
                 "section_number": chunk["section_number"],
                 "section_title": chunk["section_title"],
@@ -99,7 +115,7 @@ class AnswerGenerator:
         retrieval_seconds = time.perf_counter() - start
 
         if chunks:
-            answer_text = self.llm.chat(build_messages(question, chunks))
+            answer_text = normalize_citations(self.llm.chat(build_messages(question, chunks)))
         else:
             answer_text = config.NOT_FOUND_MESSAGE
 

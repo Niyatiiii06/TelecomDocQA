@@ -1,0 +1,4275 @@
+{
+  "summaries": {
+    "BM25 only": {
+      "recall@1": 0.46551724137931033,
+      "recall@5": 0.6896551724137931,
+      "recall@10": 0.7586206896551724,
+      "mrr@10": 0.5671866447728517,
+      "p50_ms": 9.02440000209026,
+      "p95_ms": 15.82848500693217
+    },
+    "Dense only": {
+      "recall@1": 0.6551724137931034,
+      "recall@5": 0.896551724137931,
+      "recall@10": 0.9137931034482759,
+      "mrr@10": 0.7524630541871922,
+      "p50_ms": 20.12189998640679,
+      "p95_ms": 34.878019979805686
+    },
+    "Hybrid (RRF)": {
+      "recall@1": 0.5689655172413793,
+      "recall@5": 0.8103448275862069,
+      "recall@10": 0.896551724137931,
+      "mrr@10": 0.6612753147235906,
+      "p50_ms": 32.612199982395396,
+      "p95_ms": 42.10320502752438
+    },
+    "Hybrid + rerank": {
+      "recall@1": 0.7241379310344828,
+      "recall@5": 0.9310344827586207,
+      "recall@10": 0.9655172413793104,
+      "mrr@10": 0.808764367816092,
+      "p50_ms": 1125.9753000049386,
+      "p95_ms": 1565.1921049575321
+    }
+  },
+  "threshold": {
+    "threshold": -1.0,
+    "unanswerable_refused": "10/10",
+    "answerable_wrongly_refused": "0/58",
+    "lowest_answerable_score": 0.2371,
+    "highest_unanswerable_score": -2.4453,
+    "scores": {
+      "answerable": [
+        [
+          "q01",
+          4.4838
+        ],
+        [
+          "q02",
+          3.2216
+        ],
+        [
+          "q03",
+          6.4114
+        ],
+        [
+          "q04",
+          2.1252
+        ],
+        [
+          "q05",
+          9.9189
+        ],
+        [
+          "q06",
+          8.5709
+        ],
+        [
+          "q07",
+          7.2202
+        ],
+        [
+          "q08",
+          6.3282
+        ],
+        [
+          "q09",
+          7.1075
+        ],
+        [
+          "q10",
+          6.9375
+        ],
+        [
+          "q11",
+          3.2228
+        ],
+        [
+          "q12",
+          5.1734
+        ],
+        [
+          "q13",
+          2.8136
+        ],
+        [
+          "q14",
+          6.2528
+        ],
+        [
+          "q15",
+          7.1683
+        ],
+        [
+          "q16",
+          8.1111
+        ],
+        [
+          "q17",
+          9.7053
+        ],
+        [
+          "q18",
+          6.1376
+        ],
+        [
+          "q19",
+          6.5992
+        ],
+        [
+          "q20",
+          3.7432
+        ],
+        [
+          "q21",
+          4.6655
+        ],
+        [
+          "q22",
+          5.6752
+        ],
+        [
+          "q23",
+          6.1028
+        ],
+        [
+          "q24",
+          6.1241
+        ],
+        [
+          "q25",
+          4.0528
+        ],
+        [
+          "q26",
+          5.5401
+        ],
+        [
+          "q27",
+          5.8836
+        ],
+        [
+          "q28",
+          5.7473
+        ],
+        [
+          "q29",
+          5.4044
+        ],
+        [
+          "q30",
+          4.6159
+        ],
+        [
+          "q31",
+          6.2958
+        ],
+        [
+          "q32",
+          6.6548
+        ],
+        [
+          "q33",
+          5.9032
+        ],
+        [
+          "q34",
+          7.6118
+        ],
+        [
+          "q35",
+          10.3987
+        ],
+        [
+          "q36",
+          4.9024
+        ],
+        [
+          "q37",
+          5.7798
+        ],
+        [
+          "q38",
+          4.2662
+        ],
+        [
+          "q39",
+          5.4448
+        ],
+        [
+          "q40",
+          5.9108
+        ],
+        [
+          "q41",
+          4.655
+        ],
+        [
+          "q42",
+          9.5595
+        ],
+        [
+          "q43",
+          5.851
+        ],
+        [
+          "q44",
+          8.2474
+        ],
+        [
+          "q45",
+          4.1279
+        ],
+        [
+          "q46",
+          5.3458
+        ],
+        [
+          "q47",
+          5.7893
+        ],
+        [
+          "q48",
+          9.1246
+        ],
+        [
+          "q49",
+          6.3451
+        ],
+        [
+          "q50",
+          7.0396
+        ],
+        [
+          "q51",
+          9.3522
+        ],
+        [
+          "q52",
+          5.9363
+        ],
+        [
+          "q53",
+          6.9464
+        ],
+        [
+          "q54",
+          7.434
+        ],
+        [
+          "q55",
+          8.3292
+        ],
+        [
+          "q56",
+          6.9577
+        ],
+        [
+          "q57",
+          8.6426
+        ],
+        [
+          "q58",
+          0.2371
+        ]
+      ],
+      "unanswerable": [
+        [
+          "u01",
+          -11.1421
+        ],
+        [
+          "u02",
+          -10.6194
+        ],
+        [
+          "u03",
+          -11.1241
+        ],
+        [
+          "u04",
+          -11.0427
+        ],
+        [
+          "u05",
+          -2.4453
+        ],
+        [
+          "u06",
+          -7.2815
+        ],
+        [
+          "u07",
+          -6.2569
+        ],
+        [
+          "u08",
+          -3.3647
+        ],
+        [
+          "u09",
+          -3.0459
+        ],
+        [
+          "u10",
+          -4.7964
+        ]
+      ]
+    }
+  },
+  "per_question": {
+    "BM25 only": [
+      {
+        "id": "q01",
+        "topic": "radio_access",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.01930960000026971,
+        "top_results": [
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.2.3",
+          "ts_23501 \u00a75.26.1",
+          "ts_23501 \u00a75.18.1"
+        ]
+      },
+      {
+        "id": "q02",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.007777799968607724,
+        "top_results": [
+          "ts_38300 \u00a75.1",
+          "ts_38300 \u00a719",
+          "ts_38300 \u00a75.3.1",
+          "ts_38300 \u00a75.1",
+          "ts_38300 \u00a7B.3"
+        ]
+      },
+      {
+        "id": "q03",
+        "topic": "radio_access",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.0050749999936670065,
+        "top_results": [
+          "ts_38300 \u00a76.1",
+          "ts_38300 \u00a714",
+          "ts_38300 \u00a76.5",
+          "ts_38300 \u00a716.9.2.5",
+          "ts_38300 \u00a76.7"
+        ]
+      },
+      {
+        "id": "q04",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.006404399988241494,
+        "top_results": [
+          "ts_38300 \u00a75.1",
+          "ts_38300 \u00a76.10",
+          "ts_23501 \u00a75.43.4",
+          "ts_38300 \u00a75.2.3",
+          "ts_38300 \u00a716.10.6.6"
+        ]
+      },
+      {
+        "id": "q05",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.00846569996792823,
+        "top_results": [
+          "ts_38300 \u00a76.4.1",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a716.9.2.4",
+          "ts_38300 \u00a77.1",
+          "ts_38300 \u00a76.11.1"
+        ]
+      },
+      {
+        "id": "q06",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01227210002252832,
+        "top_results": [
+          "ts_38300 \u00a76.3",
+          "ts_38300 \u00a716.10.3",
+          "ts_38300 \u00a716.9.1",
+          "ts_38300 \u00a716.12.5.1",
+          "ts_38300 \u00a716.9.2.3"
+        ]
+      },
+      {
+        "id": "q07",
+        "topic": "radio_access",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.008426500018686056,
+        "top_results": [
+          "ts_38300 \u00a79.2.5",
+          "ts_38300 \u00a79.2.10",
+          "ts_38300 \u00a716.10.5.2",
+          "ts_38300 \u00a79.2.2.1",
+          "ts_38300 \u00a721.2.4"
+        ]
+      },
+      {
+        "id": "q08",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.011659700016025454,
+        "top_results": [
+          "ts_38300 \u00a73.2",
+          "ts_38300 \u00a79.2.6",
+          "ts_38300 \u00a79.2.6",
+          "ts_38300 \u00a78.1",
+          "ts_23501 \u00a75.3.4.3.3"
+        ]
+      },
+      {
+        "id": "q09",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.014915000007022172,
+        "top_results": [
+          "ts_38300 \u00a79.2.7",
+          "ts_38300 \u00a79.2.7",
+          "ts_38300 \u00a715.5.2.2.2",
+          "ts_38300 \u00a715.5.2.1",
+          "ts_38300 \u00a716.12.5.2"
+        ]
+      },
+      {
+        "id": "q10",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.009972299973014742,
+        "top_results": [
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a74.9.3"
+        ]
+      },
+      {
+        "id": "q11",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.0067882000003010035,
+        "top_results": [
+          "ts_38300 \u00a716.9.6.3",
+          "ts_38300 \u00a711",
+          "ts_38300 \u00a711",
+          "ts_38300 \u00a716.9.6.3",
+          "ts_23501 \u00a75.15.15.1"
+        ]
+      },
+      {
+        "id": "q12",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.00961720000486821,
+        "top_results": [
+          "ts_38300 \u00a716.4",
+          "ts_38300 \u00a72",
+          "ts_38300 \u00a73.1",
+          "ts_23501 \u00a75.16.3.8.1",
+          "ts_23501 \u00a75.16.3.8.2"
+        ]
+      },
+      {
+        "id": "q13",
+        "topic": "radio_access",
+        "first_relevant_rank": 7,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.14285714285714285,
+        "seconds": 0.004898999992292374,
+        "top_results": [
+          "ts_38300 \u00a716.14.2.1",
+          "ts_38300 \u00a74.7.4.3",
+          "ts_38300 \u00a76.1",
+          "ts_38300 \u00a716.9.6.2",
+          "ts_38300 \u00a716.14.2.1"
+        ]
+      },
+      {
+        "id": "q14",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.007839399971999228,
+        "top_results": [
+          "ts_38300 \u00a75.4.2",
+          "ts_38300 \u00a76.9",
+          "ts_38300 \u00a7B",
+          "ts_23502 \u00a75.2.3.3.1",
+          "ts_38300 \u00a73.1"
+        ]
+      },
+      {
+        "id": "q15",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.012984999979380518,
+        "top_results": [
+          "ts_38300 \u00a79.2.2.1",
+          "ts_38300 \u00a718.4",
+          "ts_38300 \u00a79.2.2.1",
+          "ts_23502 \u00a74.8.2.2",
+          "ts_23501 \u00a75.31.16"
+        ]
+      },
+      {
+        "id": "q16",
+        "topic": "radio_access",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.010222700017038733,
+        "top_results": [
+          "ts_33501 \u00a75.2.3",
+          "ts_33501 \u00a75.2.3",
+          "ts_38300 \u00a713.1",
+          "ts_33501 \u00a75.11.2",
+          "ts_33501 \u00a75.3.3"
+        ]
+      },
+      {
+        "id": "q17",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.006563999981153756,
+        "top_results": [
+          "ts_38300 \u00a76.2.1",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a77.1",
+          "ts_38300 \u00a76.11.1",
+          "ts_38300 \u00a76.5"
+        ]
+      },
+      {
+        "id": "q18",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.011303500039502978,
+        "top_results": [
+          "ts_38300 \u00a77.3.3",
+          "ts_23502 \u00a75.2.6.12.3",
+          "ts_23501 \u00a75.7.2.4.2",
+          "ts_23501 \u00a75.46.1",
+          "ts_23501 \u00a75.46.1"
+        ]
+      },
+      {
+        "id": "q19",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.012080700020305812,
+        "top_results": [
+          "ts_38300 \u00a75.3.4",
+          "ts_38300 \u00a75.3.4",
+          "ts_38300 \u00a73.2",
+          "ts_38300 \u00a79.2.6",
+          "ts_38300 \u00a79.2.6"
+        ]
+      },
+      {
+        "id": "q20",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.014647800009697676,
+        "top_results": [
+          "ts_38300 \u00a716.14.1",
+          "ts_38300 \u00a7B.4",
+          "ts_38300 \u00a7B.4",
+          "ts_38300 \u00a716.14.4.1",
+          "ts_38300 \u00a716.14.4.2"
+        ]
+      },
+      {
+        "id": "q21",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.00507139996625483,
+        "top_results": [
+          "ts_23502 \u00a74.11.0",
+          "ts_23502 \u00a74.11.0",
+          "ts_33501 \u00a711.1.1",
+          "ts_33501 \u00a76.1.1.2",
+          "ts_23502 \u00a74.11.0"
+        ]
+      },
+      {
+        "id": "q22",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.010975299985148013,
+        "top_results": [
+          "ts_23502 \u00a74.22.2.1",
+          "ts_23501 \u00a75.32.6.2.1",
+          "ts_23501 \u00a75.32.6.2.1",
+          "ts_23501 \u00a75.32.2",
+          "ts_23501 \u00a75.32.6.2.2"
+        ]
+      },
+      {
+        "id": "q23",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.005396199994720519,
+        "top_results": [
+          "ts_23501 \u00a75.8.1",
+          "ts_23502 \u00a74.23.4.3",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23501 \u00a7E.1",
+          "ts_23501 \u00a75.8.2.2.1"
+        ]
+      },
+      {
+        "id": "q24",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.008333500009030104,
+        "top_results": [
+          "ts_23501 \u00a75.8.2.4.1",
+          "ts_23501 \u00a76.2.4",
+          "ts_23501 \u00a73.2",
+          "ts_23501 \u00a74.2.2",
+          "ts_23501 \u00a75.4.3.2"
+        ]
+      },
+      {
+        "id": "q25",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.013391399988904595,
+        "top_results": [
+          "ts_33501 \u00a7I.2.2.2.2",
+          "ts_33501 \u00a7I.2.2.2.2",
+          "ts_23501 \u00a76.2.23",
+          "ts_33501 \u00a7I.9.2.1",
+          "ts_23501 \u00a76.3.17"
+        ]
+      },
+      {
+        "id": "q26",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.003763600019738078,
+        "top_results": [
+          "ts_33501 \u00a75.8.2",
+          "ts_33501 \u00a7B.2.2",
+          "ts_33501 \u00a75.13",
+          "ts_23502 \u00a74.15.3.2.10",
+          "ts_23501 \u00a75.4.3.2"
+        ]
+      },
+      {
+        "id": "q27",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.004259799956344068,
+        "top_results": [
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23501 \u00a75.15.19",
+          "ts_23502 \u00a75.2.16.3.1",
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23501 \u00a75.15.5.2.1"
+        ]
+      },
+      {
+        "id": "q28",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.0036499000270850956,
+        "top_results": [
+          "ts_33501 \u00a713.2.3.6",
+          "ts_33501 \u00a713.2.3.6",
+          "ts_33501 \u00a713.2.2.1",
+          "ts_33501 \u00a75.9.3.2",
+          "ts_33501 \u00a75.9.3.2"
+        ]
+      },
+      {
+        "id": "q29",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.0034540999913588166,
+        "top_results": [
+          "ts_23501 \u00a76.3.13",
+          "ts_23502 \u00a74.15.4.5.2",
+          "ts_23501 \u00a75.8.2.17",
+          "ts_23501 \u00a76.3.13",
+          "ts_23501 \u00a77.2.12"
+        ]
+      },
+      {
+        "id": "q30",
+        "topic": "architecture",
+        "first_relevant_rank": 10,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.1,
+        "seconds": 0.008522799995262176,
+        "top_results": [
+          "ts_23501 \u00a7G.2.2",
+          "ts_23501 \u00a7G.2.1",
+          "ts_23501 \u00a74.2.2",
+          "ts_33501 \u00a73.2",
+          "ts_23501 \u00a7G.2.2"
+        ]
+      },
+      {
+        "id": "q31",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.012391600001137704,
+        "top_results": [
+          "ts_23501 \u00a74.2.8.1",
+          "ts_33501 \u00a77.2.1",
+          "ts_23501 \u00a74.2.8.2.3",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1"
+        ]
+      },
+      {
+        "id": "q32",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.0033503000158816576,
+        "top_results": [
+          "ts_23501 \u00a75.7.4",
+          "ts_23501 \u00a75.7.1.11",
+          "ts_23501 \u00a75.7.2.7",
+          "ts_23501 \u00a75.7.3.6",
+          "ts_23501 \u00a75.7.3.7"
+        ]
+      },
+      {
+        "id": "q33",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.004130100016482174,
+        "top_results": [
+          "ts_33501 \u00a713.2.3.3",
+          "ts_23501 \u00a75.9.2",
+          "ts_33501 \u00a76.1.2",
+          "ts_23501 \u00a75.9.2",
+          "ts_33501 \u00a713.2.3.2"
+        ]
+      },
+      {
+        "id": "q34",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.011560100014321506,
+        "top_results": [
+          "ts_23501 \u00a75.9.3",
+          "ts_23501 \u00a75.16.4.8",
+          "ts_23502 \u00a74.2.2.2.2",
+          "ts_33501 \u00a710.2.2.1",
+          "ts_23502 \u00a74.2.2.2.1"
+        ]
+      },
+      {
+        "id": "q35",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.006528800004161894,
+        "top_results": [
+          "ts_23501 \u00a75.6.13",
+          "ts_23501 \u00a75.6.13",
+          "ts_23502 \u00a74.3.2.2",
+          "ts_23502 \u00a74.3.2.2.2",
+          "ts_23502 \u00a74.3.2.2.2"
+        ]
+      },
+      {
+        "id": "q36",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.006797900015953928,
+        "top_results": [
+          "ts_33501 \u00a7T.1",
+          "ts_23501 \u00a75.13",
+          "ts_23501 \u00a75.13",
+          "ts_23501 \u00a75.43.1",
+          "ts_23501 \u00a74.2.13"
+        ]
+      },
+      {
+        "id": "q37",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.00935940002091229,
+        "top_results": [
+          "ts_23501 \u00a7F",
+          "ts_33501 \u00a7I.2.2.2.2",
+          "ts_23502 \u00a74.2.5.3",
+          "ts_23501 \u00a7F",
+          "ts_23502 \u00a74.2.5.3"
+        ]
+      },
+      {
+        "id": "q38",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.015615299984347075,
+        "top_results": [
+          "ts_23501 \u00a75.6.9.3",
+          "ts_23501 \u00a75.6.9.3",
+          "ts_23502 \u00a74.11.0",
+          "ts_23501 \u00a75.6.9.3",
+          "ts_23501 \u00a75.6.9.2.3"
+        ]
+      },
+      {
+        "id": "q39",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01474630000302568,
+        "top_results": [
+          "ts_23501 \u00a75.6.9.2.2",
+          "ts_23502 \u00a74.3.5.1",
+          "ts_23502 \u00a74.3.5.1",
+          "ts_23501 \u00a75.6.9.2.3",
+          "ts_23502 \u00a74.3.5.2"
+        ]
+      },
+      {
+        "id": "q40",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.006281000038143247,
+        "top_results": [
+          "ts_33501 \u00a76.10.4",
+          "ts_33501 \u00a76.10.4",
+          "ts_33501 \u00a76.10.4",
+          "ts_23502 \u00a74.11.5.2",
+          "ts_23501 \u00a75.15.18.3"
+        ]
+      },
+      {
+        "id": "q41",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01577150000957772,
+        "top_results": [
+          "ts_23501 \u00a74.2.7",
+          "ts_23501 \u00a74.2.8.5.4",
+          "ts_23501 \u00a74.2.8.3.1",
+          "ts_23501 \u00a74.2.10",
+          "ts_23501 \u00a75.6.4.3"
+        ]
+      },
+      {
+        "id": "q42",
+        "topic": "procedures",
+        "first_relevant_rank": 7,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.14285714285714285,
+        "seconds": 0.014566600031685084,
+        "top_results": [
+          "ts_23501 \u00a75.31.16",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23501 \u00a75.31.18",
+          "ts_23502 \u00a74.2.3.1"
+        ]
+      },
+      {
+        "id": "q43",
+        "topic": "procedures",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.0066630999790504575,
+        "top_results": [
+          "ts_23502 \u00a74.4.3.3",
+          "ts_23502 \u00a74.3.4.2",
+          "ts_23502 \u00a74.2.6",
+          "ts_23502 \u00a74.4.1.4",
+          "ts_23502 \u00a74.25.7"
+        ]
+      },
+      {
+        "id": "q44",
+        "topic": "procedures",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.008689399983268231,
+        "top_results": [
+          "ts_33501 \u00a713.4.1.1.1",
+          "ts_23501 \u00a77.1.5",
+          "ts_23501 \u00a77.1.5",
+          "ts_23501 \u00a74.2.2",
+          "ts_33501 \u00a713.4.1.1.1"
+        ]
+      },
+      {
+        "id": "q45",
+        "topic": "procedures",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.010802800010424107,
+        "top_results": [
+          "ts_38300 \u00a715.5.2.2.1",
+          "ts_23501 \u00a75.32.2",
+          "ts_23502 \u00a75.2.21.2.2",
+          "ts_23501 \u00a75.4.11.4",
+          "ts_23502 \u00a74.15.3.2.4"
+        ]
+      },
+      {
+        "id": "q46",
+        "topic": "procedures",
+        "first_relevant_rank": 9,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.1111111111111111,
+        "seconds": 0.012553999957162887,
+        "top_results": [
+          "ts_33501 \u00a76.14.1",
+          "ts_23502 \u00a74.16.5.0",
+          "ts_23501 \u00a78.1",
+          "ts_23501 \u00a75.3.2.1",
+          "ts_23501 \u00a76.1"
+        ]
+      },
+      {
+        "id": "q47",
+        "topic": "security",
+        "first_relevant_rank": 5,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.2,
+        "seconds": 0.007878399977926165,
+        "top_results": [
+          "ts_33501 \u00a77.2.1",
+          "ts_33501 \u00a76.12.4",
+          "ts_23501 \u00a76.3.8",
+          "ts_23501 \u00a76.3.4",
+          "ts_33501 \u00a76.12.2"
+        ]
+      },
+      {
+        "id": "q48",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.011799799976870418,
+        "top_results": [
+          "ts_33501 \u00a76.12.3",
+          "ts_23502 \u00a74.2.2.2.2",
+          "ts_33501 \u00a76.12.3",
+          "ts_23501 \u00a75.3.2.4",
+          "ts_23502 \u00a74.2.2.2.2"
+        ]
+      },
+      {
+        "id": "q49",
+        "topic": "security",
+        "first_relevant_rank": 5,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.2,
+        "seconds": 0.008319700020365417,
+        "top_results": [
+          "ts_23501 \u00a76.3.8",
+          "ts_23501 \u00a76.3.4",
+          "ts_33501 \u00a75.2.5",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a76.12.5"
+        ]
+      },
+      {
+        "id": "q50",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.010522099968511611,
+        "top_results": [
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a76.9.4.1",
+          "ts_33501 \u00a713.2.4.4.1",
+          "ts_33501 \u00a77.2.1"
+        ]
+      },
+      {
+        "id": "q51",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.008303300011903048,
+        "top_results": [
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.9.6",
+          "ts_33501 \u00a76.4.6"
+        ]
+      },
+      {
+        "id": "q52",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.016151399991940707,
+        "top_results": [
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_33501 \u00a76.10.4"
+        ]
+      },
+      {
+        "id": "q53",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.004607599985320121,
+        "top_results": [
+          "ts_33501 \u00a75.1.1",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a75.9.3.1",
+          "ts_33501 \u00a7B.2.1.1",
+          "ts_33501 \u00a76.1.3.2"
+        ]
+      },
+      {
+        "id": "q54",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01151810004375875,
+        "top_results": [
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2"
+        ]
+      },
+      {
+        "id": "q55",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.013618700031656772,
+        "top_results": [
+          "ts_33501 \u00a76.5.1",
+          "ts_33501 \u00a75.2.3",
+          "ts_33501 \u00a79.8.3",
+          "ts_33501 \u00a75.3.3",
+          "ts_33501 \u00a76.4.3.2"
+        ]
+      },
+      {
+        "id": "q56",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.008444099978078157,
+        "top_results": [
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.2.2.1",
+          "ts_33501 \u00a713.2.2.3"
+        ]
+      },
+      {
+        "id": "q57",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01707830000668764,
+        "top_results": [
+          "ts_33501 \u00a75.2.5",
+          "ts_23501 \u00a76.3.4",
+          "ts_33501 \u00a75.2.5",
+          "ts_33501 \u00a7C.3.3",
+          "ts_33501 \u00a76.12.5"
+        ]
+      },
+      {
+        "id": "q58",
+        "topic": "security",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.010960199986584485,
+        "top_results": [
+          "ts_33501 \u00a76.1.1.2",
+          "ts_33501 \u00a77.2.1",
+          "ts_33501 \u00a77.2.1",
+          "ts_33501 \u00a76.1.3.2",
+          "ts_33501 \u00a76.2.2.1"
+        ]
+      }
+    ],
+    "Dense only": [
+      {
+        "id": "q01",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.0287432000041008,
+        "top_results": [
+          "ts_38300 \u00a74.1",
+          "ts_38300 \u00a71",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a73.1",
+          "ts_38300 \u00a74.5"
+        ]
+      },
+      {
+        "id": "q02",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01938239997252822,
+        "top_results": [
+          "ts_38300 \u00a75.1",
+          "ts_23501 \u00a75.6.16.1",
+          "ts_38300 \u00a716.9.4.1",
+          "ts_38300 \u00a716.9.4.3",
+          "ts_38300 \u00a714"
+        ]
+      },
+      {
+        "id": "q03",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.01926239999011159,
+        "top_results": [
+          "ts_38300 \u00a716.9.2.5",
+          "ts_38300 \u00a76.5",
+          "ts_38300 \u00a716.10.3",
+          "ts_38300 \u00a76.1",
+          "ts_38300 \u00a79.2.3.2.3"
+        ]
+      },
+      {
+        "id": "q04",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.019624600012321025,
+        "top_results": [
+          "ts_38300 \u00a75.1",
+          "ts_38300 \u00a76.10",
+          "ts_23501 \u00a75.8.5.5",
+          "ts_23502 \u00a75.2.26.2.1",
+          "ts_23502 \u00a75.2.26.2.1"
+        ]
+      },
+      {
+        "id": "q05",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01915150001877919,
+        "top_results": [
+          "ts_38300 \u00a76.4.1",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a716.9.2.4",
+          "ts_38300 \u00a74.4.1",
+          "ts_38300 \u00a74.4.2"
+        ]
+      },
+      {
+        "id": "q06",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02043600002070889,
+        "top_results": [
+          "ts_38300 \u00a76.3",
+          "ts_38300 \u00a74.7.2",
+          "ts_38300 \u00a716.9.2.3",
+          "ts_38300 \u00a716.10.3",
+          "ts_38300 \u00a76.3.2"
+        ]
+      },
+      {
+        "id": "q07",
+        "topic": "radio_access",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.019993700028862804,
+        "top_results": [
+          "ts_38300 \u00a79.2.10",
+          "ts_38300 \u00a79.2.5",
+          "ts_38300 \u00a716.12.5.6",
+          "ts_38300 \u00a79.2.2.1",
+          "ts_38300 \u00a79.2.10"
+        ]
+      },
+      {
+        "id": "q08",
+        "topic": "radio_access",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.019295600010082126,
+        "top_results": [
+          "ts_23501 \u00a75.6.15",
+          "ts_23502 \u00a74.13.2.2",
+          "ts_23502 \u00a74.2.10.2",
+          "ts_23501 \u00a75.3.5",
+          "ts_23502 \u00a74.15.3.2.4"
+        ]
+      },
+      {
+        "id": "q09",
+        "topic": "radio_access",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.01971259998390451,
+        "top_results": [
+          "ts_33501 \u00a7E.1",
+          "ts_38300 \u00a716.9.2.6",
+          "ts_38300 \u00a716.21.3.2",
+          "ts_38300 \u00a79.2.7",
+          "ts_38300 \u00a716.12.5.2"
+        ]
+      },
+      {
+        "id": "q10",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01965339999878779,
+        "top_results": [
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_33501 \u00a76.1.3.3.1"
+        ]
+      },
+      {
+        "id": "q11",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.020538799988571554,
+        "top_results": [
+          "ts_38300 \u00a711",
+          "ts_38300 \u00a716.9.6.3",
+          "ts_38300 \u00a711",
+          "ts_23501 \u00a75.4.13.0",
+          "ts_23501 \u00a75.31.7.2.1"
+        ]
+      },
+      {
+        "id": "q12",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01895550003973767,
+        "top_results": [
+          "ts_38300 \u00a716.4",
+          "ts_23501 \u00a75.40.3",
+          "ts_23502 \u00a74.13.2.2",
+          "ts_23502 \u00a74.13.2.2",
+          "ts_23501 \u00a75.40.4"
+        ]
+      },
+      {
+        "id": "q13",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.021589299954939634,
+        "top_results": [
+          "ts_38300 \u00a76.2.4",
+          "ts_38300 \u00a716.14.2.1",
+          "ts_38300 \u00a716.14.2.1",
+          "ts_38300 \u00a75.2.5.4",
+          "ts_38300 \u00a716.10.5.7"
+        ]
+      },
+      {
+        "id": "q14",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.023759300005622208,
+        "top_results": [
+          "ts_38300 \u00a75.4.2",
+          "ts_38300 \u00a76.9",
+          "ts_38300 \u00a7B",
+          "ts_23502 \u00a74.9.1.3.2",
+          "ts_23501 \u00a75.33.2.2"
+        ]
+      },
+      {
+        "id": "q15",
+        "topic": "radio_access",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.04194299998925999,
+        "top_results": [
+          "ts_38300 \u00a79.2.2.1",
+          "ts_38300 \u00a79.2.2.6",
+          "ts_33501 \u00a76.8.2.1.1",
+          "ts_33501 \u00a76.8.2.1.3",
+          "ts_38300 \u00a721.2.4"
+        ]
+      },
+      {
+        "id": "q16",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.039117799955420196,
+        "top_results": [
+          "ts_33501 \u00a75.2.3",
+          "ts_38300 \u00a713.1",
+          "ts_33501 \u00a76.10.4",
+          "ts_33501 \u00a75.2.3",
+          "ts_33501 \u00a75.3.3"
+        ]
+      },
+      {
+        "id": "q17",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03743379999650642,
+        "top_results": [
+          "ts_38300 \u00a76.2.1",
+          "ts_38300 \u00a716.9.2.2",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a76.4.1",
+          "ts_38300 \u00a76.11.1"
+        ]
+      },
+      {
+        "id": "q18",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.025599499989766628,
+        "top_results": [
+          "ts_38300 \u00a77.3.3",
+          "ts_23502 \u00a74.15.3.1",
+          "ts_23502 \u00a74.15.3.2.3",
+          "ts_38300 \u00a77.9",
+          "ts_23502 \u00a74.15.3.2.2"
+        ]
+      },
+      {
+        "id": "q19",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.022219299979042262,
+        "top_results": [
+          "ts_38300 \u00a75.3.4",
+          "ts_38300 \u00a75.3.4",
+          "ts_33501 \u00a76.3.2.2",
+          "ts_23501 \u00a75.3.4.3.3",
+          "ts_23501 \u00a75.15.1"
+        ]
+      },
+      {
+        "id": "q20",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.022442299989052117,
+        "top_results": [
+          "ts_38300 \u00a716.14.4.1",
+          "ts_38300 \u00a716.14.1",
+          "ts_38300 \u00a716.14.4.2",
+          "ts_38300 \u00a7B.4",
+          "ts_23501 \u00a73.1"
+        ]
+      },
+      {
+        "id": "q21",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.020865999977104366,
+        "top_results": [
+          "ts_23501 \u00a75.21.2.2.1",
+          "ts_23501 \u00a76.2.1",
+          "ts_23501 \u00a76.2.1",
+          "ts_23502 \u00a74.16.2.1.1",
+          "ts_23501 \u00a75.21.2.2.1"
+        ]
+      },
+      {
+        "id": "q22",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.022983700037002563,
+        "top_results": [
+          "ts_23501 \u00a75.8.2.2.1",
+          "ts_23501 \u00a75.8.2.2.1",
+          "ts_23501 \u00a7R",
+          "ts_23501 \u00a7R",
+          "ts_38300 \u00a74.1"
+        ]
+      },
+      {
+        "id": "q23",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.020102799986489117,
+        "top_results": [
+          "ts_23501 \u00a76.2.3",
+          "ts_23501 \u00a75.8.1",
+          "ts_23501 \u00a75.8.2.19.2",
+          "ts_23501 \u00a75.8.2.14",
+          "ts_23501 \u00a75.8.2.4.1"
+        ]
+      },
+      {
+        "id": "q24",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.020069500023964792,
+        "top_results": [
+          "ts_23501 \u00a76.2.4",
+          "ts_23502 \u00a75.2.5.4.1",
+          "ts_23502 \u00a74.23.6.2",
+          "ts_23501 \u00a76.2.10",
+          "ts_23502 \u00a75.2.5.4.1"
+        ]
+      },
+      {
+        "id": "q25",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.024827899993397295,
+        "top_results": [
+          "ts_33501 \u00a76.12.5",
+          "ts_23501 \u00a75.30.2.9.2",
+          "ts_33501 \u00a7C.4.2.2",
+          "ts_33501 \u00a76.2.2.2",
+          "ts_33501 \u00a75.8.2"
+        ]
+      },
+      {
+        "id": "q26",
+        "topic": "architecture",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.019993800029624254,
+        "top_results": [
+          "ts_23502 \u00a75.2.10.3.1",
+          "ts_23502 \u00a75.2.10.4.1",
+          "ts_23502 \u00a75.2.10.2.1",
+          "ts_23501 \u00a76.2.8",
+          "ts_23501 \u00a76.3.4"
+        ]
+      },
+      {
+        "id": "q27",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01997970003867522,
+        "top_results": [
+          "ts_23501 \u00a76.2.14",
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23502 \u00a75.2.16.2.1",
+          "ts_23501 \u00a75.15.5.3",
+          "ts_23501 \u00a75.15.5.2.1"
+        ]
+      },
+      {
+        "id": "q28",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.020180099993012846,
+        "top_results": [
+          "ts_23501 \u00a76.2.17",
+          "ts_33501 \u00a7G.1",
+          "ts_33501 \u00a74.2.1",
+          "ts_33501 \u00a75.9.3.2",
+          "ts_33501 \u00a713.2.2.4.2"
+        ]
+      },
+      {
+        "id": "q29",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.022277900017797947,
+        "top_results": [
+          "ts_23501 \u00a76.2.18",
+          "ts_23501 \u00a76.3.13",
+          "ts_23501 \u00a76.2.5.0",
+          "ts_23501 \u00a77.2.12",
+          "ts_23501 \u00a76.3.13"
+        ]
+      },
+      {
+        "id": "q30",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02162980003049597,
+        "top_results": [
+          "ts_23501 \u00a76.2.19",
+          "ts_23501 \u00a7G.2.1",
+          "ts_23501 \u00a7G.2.2",
+          "ts_23501 \u00a7G.2.2",
+          "ts_23501 \u00a76.2.17"
+        ]
+      },
+      {
+        "id": "q31",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02243900002213195,
+        "top_results": [
+          "ts_23501 \u00a74.2.8.1",
+          "ts_33501 \u00a77.2.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.15",
+          "ts_23501 \u00a75.17.1.1"
+        ]
+      },
+      {
+        "id": "q32",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01989510003477335,
+        "top_results": [
+          "ts_23501 \u00a75.7.4",
+          "ts_23501 \u00a75.7.1.11",
+          "ts_23501 \u00a75.7.2.7",
+          "ts_23501 \u00a75.37.1",
+          "ts_23501 \u00a75.7.4"
+        ]
+      },
+      {
+        "id": "q33",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.01998560002539307,
+        "top_results": [
+          "ts_33501 \u00a76.12.1",
+          "ts_23501 \u00a75.9.2",
+          "ts_33501 \u00a76.12.2",
+          "ts_23502 \u00a75.2.8.2.9",
+          "ts_33501 \u00a76.12.2"
+        ]
+      },
+      {
+        "id": "q34",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02109390002442524,
+        "top_results": [
+          "ts_23501 \u00a75.9.3",
+          "ts_23502 \u00a74.16.11.1",
+          "ts_23501 \u00a75.5.1",
+          "ts_23501 \u00a76.2.1",
+          "ts_23501 \u00a75.3.2.4"
+        ]
+      },
+      {
+        "id": "q35",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02014099998632446,
+        "top_results": [
+          "ts_23501 \u00a75.6.13",
+          "ts_23501 \u00a75.6.13",
+          "ts_23501 \u00a75.17.2.3.2",
+          "ts_23501 \u00a73.1",
+          "ts_23502 \u00a74.3.2.2.2"
+        ]
+      },
+      {
+        "id": "q36",
+        "topic": "architecture",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.020911699975840747,
+        "top_results": [
+          "ts_33501 \u00a7T.1",
+          "ts_23501 \u00a74.1",
+          "ts_23501 \u00a75.13",
+          "ts_23501 \u00a75.13",
+          "ts_23501 \u00a74.2.13"
+        ]
+      },
+      {
+        "id": "q37",
+        "topic": "architecture",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.022746499977074564,
+        "top_results": [
+          "ts_23501 \u00a76.3.2",
+          "ts_23501 \u00a76.3.7.0",
+          "ts_23501 \u00a76.3.5",
+          "ts_23501 \u00a75.46.2",
+          "ts_23501 \u00a75.21.2.3"
+        ]
+      },
+      {
+        "id": "q38",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.022278600023128092,
+        "top_results": [
+          "ts_23501 \u00a75.6.9.3",
+          "ts_23501 \u00a75.6.9.2.3",
+          "ts_23502 \u00a74.3.5.2",
+          "ts_23501 \u00a75.34.1",
+          "ts_23501 \u00a75.6.9.3"
+        ]
+      },
+      {
+        "id": "q39",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.0344269999768585,
+        "top_results": [
+          "ts_23501 \u00a75.6.9.2.2",
+          "ts_23502 \u00a74.3.5.1",
+          "ts_23502 \u00a74.3.5.2",
+          "ts_23502 \u00a74.3.5.1",
+          "ts_23502 \u00a74.3.5.2"
+        ]
+      },
+      {
+        "id": "q40",
+        "topic": "architecture",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.023218900023493916,
+        "top_results": [
+          "ts_23501 \u00a75.15.9",
+          "ts_23501 \u00a75.19.7.4",
+          "ts_23501 \u00a75.15.2.1",
+          "ts_23501 \u00a75.15.12.1",
+          "ts_23502 \u00a75.2.2.2.2"
+        ]
+      },
+      {
+        "id": "q41",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02029670000774786,
+        "top_results": [
+          "ts_23501 \u00a74.2.7",
+          "ts_23501 \u00a74.2.8.3.1",
+          "ts_23501 \u00a74.2.7",
+          "ts_23501 \u00a7A",
+          "ts_23501 \u00a74.2.4"
+        ]
+      },
+      {
+        "id": "q42",
+        "topic": "procedures",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.019226300006266683,
+        "top_results": [
+          "ts_23502 \u00a74.2.3.2",
+          "ts_23502 \u00a74.2.3.1",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23502 \u00a74.2.3.3"
+        ]
+      },
+      {
+        "id": "q43",
+        "topic": "procedures",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.019270799995865673,
+        "top_results": [
+          "ts_23502 \u00a74.23.8",
+          "ts_23502 \u00a74.22.10.1",
+          "ts_23502 \u00a74.2.6",
+          "ts_23502 \u00a74.2.6",
+          "ts_23502 \u00a74.4.3.3"
+        ]
+      },
+      {
+        "id": "q44",
+        "topic": "procedures",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.019328099966514856,
+        "top_results": [
+          "ts_23501 \u00a77.1.5",
+          "ts_23501 \u00a76.2.6.1",
+          "ts_23501 \u00a77.1.5",
+          "ts_23502 \u00a74.17.6.1",
+          "ts_33501 \u00a75.9.2.2"
+        ]
+      },
+      {
+        "id": "q45",
+        "topic": "procedures",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.019583499990403652,
+        "top_results": [
+          "ts_23501 \u00a75.35.1",
+          "ts_23501 \u00a7N.5",
+          "ts_23502 \u00a74.2.2.3.1",
+          "ts_23502 \u00a74.2.2.3.3",
+          "ts_23501 \u00a7N.5"
+        ]
+      },
+      {
+        "id": "q46",
+        "topic": "procedures",
+        "first_relevant_rank": 7,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.14285714285714285,
+        "seconds": 0.019497600034810603,
+        "top_results": [
+          "ts_23501 \u00a7G.4.1",
+          "ts_23501 \u00a75.3.1",
+          "ts_23501 \u00a75.3.2.1",
+          "ts_23502 \u00a74.2.2.1",
+          "ts_23502 \u00a74.2.1"
+        ]
+      },
+      {
+        "id": "q47",
+        "topic": "security",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.018765699991490692,
+        "top_results": [
+          "ts_33501 \u00a7B.2.1.2.2",
+          "ts_33501 \u00a76.1.2",
+          "ts_33501 \u00a76.12.2",
+          "ts_23501 \u00a76.3.8",
+          "ts_23501 \u00a76.3.8"
+        ]
+      },
+      {
+        "id": "q48",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02249369997298345,
+        "top_results": [
+          "ts_33501 \u00a76.12.3",
+          "ts_33501 \u00a75.5.3",
+          "ts_33501 \u00a76.12.3",
+          "ts_23501 \u00a75.21.2.2.1",
+          "ts_23502 \u00a74.2.2.2.2"
+        ]
+      },
+      {
+        "id": "q49",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.020017599978018552,
+        "top_results": [
+          "ts_33501 \u00a76.12.5",
+          "ts_23501 \u00a75.9.2",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a76.12.1",
+          "ts_33501 \u00a76.12.2"
+        ]
+      },
+      {
+        "id": "q50",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.018689499993342906,
+        "top_results": [
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a77.2.1",
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a76.2.2.1"
+        ]
+      },
+      {
+        "id": "q51",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.019021199957933277,
+        "top_results": [
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.7"
+        ]
+      },
+      {
+        "id": "q52",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.019408299995120615,
+        "top_results": [
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3"
+        ]
+      },
+      {
+        "id": "q53",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.018244699982460588,
+        "top_results": [
+          "ts_33501 \u00a75.1.1",
+          "ts_23502 \u00a74.23.9.3",
+          "ts_23502 \u00a74.23.9.2",
+          "ts_23502 \u00a74.3.5.6",
+          "ts_33501 \u00a74.2.2"
+        ]
+      },
+      {
+        "id": "q54",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.021806799981277436,
+        "top_results": [
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.1.1",
+          "ts_33501 \u00a76.16.1.2",
+          "ts_33501 \u00a76.1.3.2"
+        ]
+      },
+      {
+        "id": "q55",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.021483600023202598,
+        "top_results": [
+          "ts_33501 \u00a76.5.1",
+          "ts_33501 \u00a76.4.3.2",
+          "ts_33501 \u00a75.3.3",
+          "ts_33501 \u00a75.2.3",
+          "ts_33501 \u00a76.10.4"
+        ]
+      },
+      {
+        "id": "q56",
+        "topic": "security",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.019270899996627122,
+        "top_results": [
+          "ts_33501 \u00a713.2.2.1",
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.2.2.1",
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.2.2.4.2"
+        ]
+      },
+      {
+        "id": "q57",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.01927989994874224,
+        "top_results": [
+          "ts_33501 \u00a75.2.5",
+          "ts_33501 \u00a76.12.5",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a7C.4.4.2",
+          "ts_33501 \u00a75.2.5"
+        ]
+      },
+      {
+        "id": "q58",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.018523300008382648,
+        "top_results": [
+          "ts_33501 \u00a74.3",
+          "ts_23501 \u00a75.10.2.1",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.9.5.2",
+          "ts_33501 \u00a76.8.1.2.1"
+        ]
+      }
+    ],
+    "Hybrid (RRF)": [
+      {
+        "id": "q01",
+        "topic": "radio_access",
+        "first_relevant_rank": 9,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.1111111111111111,
+        "seconds": 0.04250330000650138,
+        "top_results": [
+          "ts_23501 \u00a74.2.8.1",
+          "ts_38300 \u00a78.3",
+          "ts_23501 \u00a75.26.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1"
+        ]
+      },
+      {
+        "id": "q02",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.0303818000247702,
+        "top_results": [
+          "ts_38300 \u00a75.1",
+          "ts_38300 \u00a716.9.4.1",
+          "ts_38300 \u00a716.9.4.1",
+          "ts_38300 \u00a716.14.9",
+          "ts_38300 \u00a7B.3"
+        ]
+      },
+      {
+        "id": "q03",
+        "topic": "radio_access",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.02698460000101477,
+        "top_results": [
+          "ts_38300 \u00a716.9.2.5",
+          "ts_38300 \u00a76.1",
+          "ts_38300 \u00a76.5",
+          "ts_38300 \u00a716.10.3",
+          "ts_38300 \u00a79.2.3.2.3"
+        ]
+      },
+      {
+        "id": "q04",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.02787200000602752,
+        "top_results": [
+          "ts_38300 \u00a75.1",
+          "ts_38300 \u00a76.10",
+          "ts_38300 \u00a716.10.6.6",
+          "ts_23501 \u00a75.8.5.5",
+          "ts_23501 \u00a75.43.4"
+        ]
+      },
+      {
+        "id": "q05",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03223829995840788,
+        "top_results": [
+          "ts_38300 \u00a76.4.1",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a716.9.2.4",
+          "ts_38300 \u00a76.11.1",
+          "ts_38300 \u00a76.5"
+        ]
+      },
+      {
+        "id": "q06",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03833100001793355,
+        "top_results": [
+          "ts_38300 \u00a76.3",
+          "ts_38300 \u00a716.10.3",
+          "ts_38300 \u00a716.9.2.3",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a716.1.3"
+        ]
+      },
+      {
+        "id": "q07",
+        "topic": "radio_access",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.03291269997134805,
+        "top_results": [
+          "ts_38300 \u00a79.2.10",
+          "ts_38300 \u00a79.2.5",
+          "ts_38300 \u00a721.2.4",
+          "ts_38300 \u00a79.2.5",
+          "ts_38300 \u00a716.12.5.6"
+        ]
+      },
+      {
+        "id": "q08",
+        "topic": "radio_access",
+        "first_relevant_rank": 5,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.2,
+        "seconds": 0.034110100008547306,
+        "top_results": [
+          "ts_23501 \u00a75.6.15",
+          "ts_23501 \u00a75.3.5",
+          "ts_38300 \u00a73.2",
+          "ts_23502 \u00a74.13.2.2",
+          "ts_38300 \u00a79.2.6"
+        ]
+      },
+      {
+        "id": "q09",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03877480002120137,
+        "top_results": [
+          "ts_38300 \u00a79.2.7",
+          "ts_38300 \u00a716.21.3.2",
+          "ts_38300 \u00a716.12.5.2",
+          "ts_38300 \u00a79.2.7",
+          "ts_23501 \u00a75.4.4.1"
+        ]
+      },
+      {
+        "id": "q10",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03246489999582991,
+        "top_results": [
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.3.1"
+        ]
+      },
+      {
+        "id": "q11",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.029863800038583577,
+        "top_results": [
+          "ts_38300 \u00a711",
+          "ts_38300 \u00a716.9.6.3",
+          "ts_38300 \u00a711",
+          "ts_38300 \u00a716.9.6.2",
+          "ts_38300 \u00a715.4.2.3"
+        ]
+      },
+      {
+        "id": "q12",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03081460000248626,
+        "top_results": [
+          "ts_38300 \u00a716.4",
+          "ts_23501 \u00a75.40.3",
+          "ts_38300 \u00a72",
+          "ts_23502 \u00a74.13.2.2",
+          "ts_38300 \u00a73.1"
+        ]
+      },
+      {
+        "id": "q13",
+        "topic": "radio_access",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.026978900015819818,
+        "top_results": [
+          "ts_38300 \u00a716.14.2.1",
+          "ts_38300 \u00a716.14.2.1",
+          "ts_38300 \u00a76.2.4",
+          "ts_38300 \u00a75.2.5.4",
+          "ts_38300 \u00a76.1"
+        ]
+      },
+      {
+        "id": "q14",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.030745500000193715,
+        "top_results": [
+          "ts_38300 \u00a75.4.2",
+          "ts_38300 \u00a76.9",
+          "ts_38300 \u00a7B",
+          "ts_38300 \u00a710.3",
+          "ts_23501 \u00a75.8.2.19.2"
+        ]
+      },
+      {
+        "id": "q15",
+        "topic": "radio_access",
+        "first_relevant_rank": 10,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.1,
+        "seconds": 0.03650039999047294,
+        "top_results": [
+          "ts_38300 \u00a79.2.2.1",
+          "ts_38300 \u00a79.2.2.6",
+          "ts_38300 \u00a79.2.2.4.1",
+          "ts_38300 \u00a79.2.2.6",
+          "ts_38300 \u00a79.2.2.1"
+        ]
+      },
+      {
+        "id": "q16",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.03287960001034662,
+        "top_results": [
+          "ts_33501 \u00a75.2.3",
+          "ts_38300 \u00a713.1",
+          "ts_33501 \u00a75.2.3",
+          "ts_33501 \u00a75.3.3",
+          "ts_33501 \u00a75.11.2"
+        ]
+      },
+      {
+        "id": "q17",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02965270000277087,
+        "top_results": [
+          "ts_38300 \u00a76.2.1",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a76.11.1",
+          "ts_38300 \u00a716.9.2.2",
+          "ts_38300 \u00a76.4.1"
+        ]
+      },
+      {
+        "id": "q18",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.034102699952200055,
+        "top_results": [
+          "ts_38300 \u00a77.3.3",
+          "ts_23502 \u00a74.15.3.1",
+          "ts_23502 \u00a74.15.3.1",
+          "ts_23502 \u00a75.2.6.12.3",
+          "ts_23502 \u00a74.15.3.2.3"
+        ]
+      },
+      {
+        "id": "q19",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.0375056000193581,
+        "top_results": [
+          "ts_38300 \u00a75.3.4",
+          "ts_38300 \u00a75.3.4",
+          "ts_23501 \u00a75.3.4.3.3",
+          "ts_23501 \u00a75.33.2.2",
+          "ts_38300 \u00a79.2.6"
+        ]
+      },
+      {
+        "id": "q20",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03960519999964163,
+        "top_results": [
+          "ts_38300 \u00a716.14.1",
+          "ts_38300 \u00a716.14.4.1",
+          "ts_38300 \u00a7B.4",
+          "ts_38300 \u00a716.14.4.2",
+          "ts_38300 \u00a7B.4"
+        ]
+      },
+      {
+        "id": "q21",
+        "topic": "architecture",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.02793290000408888,
+        "top_results": [
+          "ts_23502 \u00a74.11.0",
+          "ts_23502 \u00a74.16.11.1",
+          "ts_23501 \u00a75.21.2.2.1",
+          "ts_23501 \u00a76.2.1",
+          "ts_23502 \u00a74.11.0"
+        ]
+      },
+      {
+        "id": "q22",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.0321241999627091,
+        "top_results": [
+          "ts_23501 \u00a75.32.6.2.1",
+          "ts_23501 \u00a75.8.2.2.1",
+          "ts_23501 \u00a75.32.6.2.2",
+          "ts_23501 \u00a75.8.2.2.1",
+          "ts_23502 \u00a74.22.2.1"
+        ]
+      },
+      {
+        "id": "q23",
+        "topic": "architecture",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.02449690003413707,
+        "top_results": [
+          "ts_23501 \u00a75.8.1",
+          "ts_23501 \u00a75.8.1",
+          "ts_23502 \u00a74.15.4.5.2",
+          "ts_23501 \u00a76.2.3",
+          "ts_23502 \u00a74.23.4.3"
+        ]
+      },
+      {
+        "id": "q24",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.029939899977762252,
+        "top_results": [
+          "ts_23501 \u00a76.2.4",
+          "ts_23501 \u00a76.2.10",
+          "ts_38300 \u00a74.1",
+          "ts_23501 \u00a75.8.2.4.1",
+          "ts_23502 \u00a75.2.5.4.1"
+        ]
+      },
+      {
+        "id": "q25",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.037548299995251,
+        "top_results": [
+          "ts_23501 \u00a75.30.2.9.2",
+          "ts_23501 \u00a75.30.2.9.2",
+          "ts_33501 \u00a73.1",
+          "ts_33501 \u00a7I.2.2.2.2",
+          "ts_23501 \u00a75.30.2.9.2"
+        ]
+      },
+      {
+        "id": "q26",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.023812799947336316,
+        "top_results": [
+          "ts_23501 \u00a76.3.4",
+          "ts_23501 \u00a76.3.4",
+          "ts_23501 \u00a77.2.7",
+          "ts_23501 \u00a76.3.4",
+          "ts_23502 \u00a74.2.2.2.2"
+        ]
+      },
+      {
+        "id": "q27",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.024763900029938668,
+        "top_results": [
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23501 \u00a75.15.5.2.1"
+        ]
+      },
+      {
+        "id": "q28",
+        "topic": "architecture",
+        "first_relevant_rank": 7,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.14285714285714285,
+        "seconds": 0.02437110000755638,
+        "top_results": [
+          "ts_33501 \u00a75.9.3.2",
+          "ts_33501 \u00a713.2.3.6",
+          "ts_33501 \u00a75.9.3.2",
+          "ts_33501 \u00a713.3.3",
+          "ts_33501 \u00a713.2.2.4.2"
+        ]
+      },
+      {
+        "id": "q29",
+        "topic": "architecture",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.025121000013314188,
+        "top_results": [
+          "ts_23501 \u00a76.3.13",
+          "ts_23501 \u00a77.2.12",
+          "ts_23501 \u00a76.2.18",
+          "ts_23501 \u00a76.3.13",
+          "ts_33501 \u00a7X.9"
+        ]
+      },
+      {
+        "id": "q30",
+        "topic": "architecture",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.03287669998826459,
+        "top_results": [
+          "ts_23501 \u00a7G.2.1",
+          "ts_23501 \u00a7G.2.2",
+          "ts_23501 \u00a7G.2.2",
+          "ts_23501 \u00a76.2.19",
+          "ts_23501 \u00a7G.2.2"
+        ]
+      },
+      {
+        "id": "q31",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.036574300029315054,
+        "top_results": [
+          "ts_33501 \u00a77.2.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.15"
+        ]
+      },
+      {
+        "id": "q32",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.023374399985186756,
+        "top_results": [
+          "ts_23501 \u00a75.7.4",
+          "ts_23501 \u00a75.7.1.11",
+          "ts_23501 \u00a75.7.2.7",
+          "ts_23501 \u00a75.7.3.6",
+          "ts_23501 \u00a75.7.4"
+        ]
+      },
+      {
+        "id": "q33",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02862619998631999,
+        "top_results": [
+          "ts_23501 \u00a75.9.2",
+          "ts_23501 \u00a75.9.2",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a713.2.3.2",
+          "ts_33501 \u00a76.1.2"
+        ]
+      },
+      {
+        "id": "q34",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.034110200009308755,
+        "top_results": [
+          "ts_23501 \u00a75.9.3",
+          "ts_38300 \u00a79.2.2.1",
+          "ts_23502 \u00a74.16.11.1",
+          "ts_23501 \u00a75.16.4.8",
+          "ts_23501 \u00a75.5.1"
+        ]
+      },
+      {
+        "id": "q35",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02746299997670576,
+        "top_results": [
+          "ts_23501 \u00a75.6.13",
+          "ts_23501 \u00a75.6.13",
+          "ts_23502 \u00a74.3.2.2.2",
+          "ts_23502 \u00a74.3.2.2.2",
+          "ts_23502 \u00a74.3.2.2.2"
+        ]
+      },
+      {
+        "id": "q36",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.02792069996939972,
+        "top_results": [
+          "ts_33501 \u00a7T.1",
+          "ts_23501 \u00a75.13",
+          "ts_23501 \u00a74.2.13",
+          "ts_23501 \u00a75.13",
+          "ts_23501 \u00a75.13"
+        ]
+      },
+      {
+        "id": "q37",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03014909999910742,
+        "top_results": [
+          "ts_23501 \u00a76.3.5",
+          "ts_23501 \u00a75.21.2.2.1",
+          "ts_23501 \u00a75.21.2.2.1",
+          "ts_23501 \u00a76.3.2",
+          "ts_23501 \u00a7F"
+        ]
+      },
+      {
+        "id": "q38",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.0366358999744989,
+        "top_results": [
+          "ts_23501 \u00a75.6.9.3",
+          "ts_23501 \u00a75.6.9.2.3",
+          "ts_23501 \u00a75.6.9.3",
+          "ts_23501 \u00a75.6.9.3",
+          "ts_23501 \u00a75.34.1"
+        ]
+      },
+      {
+        "id": "q39",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03687429998535663,
+        "top_results": [
+          "ts_23501 \u00a75.6.9.2.2",
+          "ts_23502 \u00a74.3.5.1",
+          "ts_23502 \u00a74.3.5.2",
+          "ts_23502 \u00a74.3.5.1",
+          "ts_23502 \u00a74.3.5.1"
+        ]
+      },
+      {
+        "id": "q40",
+        "topic": "architecture",
+        "first_relevant_rank": 5,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.2,
+        "seconds": 0.026216499973088503,
+        "top_results": [
+          "ts_23501 \u00a75.15.9",
+          "ts_33501 \u00a76.10.4",
+          "ts_23501 \u00a75.19.7.4",
+          "ts_33501 \u00a76.10.4",
+          "ts_23501 \u00a75.15.2.1"
+        ]
+      },
+      {
+        "id": "q41",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.045918699994217604,
+        "top_results": [
+          "ts_23501 \u00a74.2.7",
+          "ts_23501 \u00a74.2.8.3.1",
+          "ts_23501 \u00a74.2.8.5.4",
+          "ts_23501 \u00a74.2.4",
+          "ts_23501 \u00a7D.3"
+        ]
+      },
+      {
+        "id": "q42",
+        "topic": "procedures",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 0.04288190003717318,
+        "top_results": [
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23502 \u00a74.2.3.1",
+          "ts_23502 \u00a74.2.3.2",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23502 \u00a74.2.3.3"
+        ]
+      },
+      {
+        "id": "q43",
+        "topic": "procedures",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.03319400001782924,
+        "top_results": [
+          "ts_23502 \u00a74.4.3.3",
+          "ts_23502 \u00a74.3.4.2",
+          "ts_23502 \u00a74.4.1.4",
+          "ts_23502 \u00a74.2.6",
+          "ts_23502 \u00a74.2.6"
+        ]
+      },
+      {
+        "id": "q44",
+        "topic": "procedures",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03275949996896088,
+        "top_results": [
+          "ts_23501 \u00a77.1.5",
+          "ts_23501 \u00a77.1.5",
+          "ts_23501 \u00a76.2.6.1",
+          "ts_23501 \u00a74.2.2",
+          "ts_33501 \u00a713.4.1.1.1"
+        ]
+      },
+      {
+        "id": "q45",
+        "topic": "procedures",
+        "first_relevant_rank": 6,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.16666666666666666,
+        "seconds": 0.030712799984030426,
+        "top_results": [
+          "ts_23502 \u00a74.11.1.3.1",
+          "ts_23501 \u00a75.35.1",
+          "ts_38300 \u00a715.5.2.2.1",
+          "ts_23501 \u00a7N.5",
+          "ts_23501 \u00a75.32.2"
+        ]
+      },
+      {
+        "id": "q46",
+        "topic": "procedures",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 0.03644019999774173,
+        "top_results": [
+          "ts_23501 \u00a75.3.2.1",
+          "ts_23502 \u00a74.2.1",
+          "ts_23501 \u00a76.1",
+          "ts_33501 \u00a76.14.1",
+          "ts_23501 \u00a7G.4.1"
+        ]
+      },
+      {
+        "id": "q47",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03360409999731928,
+        "top_results": [
+          "ts_33501 \u00a76.12.2",
+          "ts_23501 \u00a76.3.8",
+          "ts_33501 \u00a76.1.2",
+          "ts_33501 \u00a76.12.4",
+          "ts_23501 \u00a76.3.8"
+        ]
+      },
+      {
+        "id": "q48",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03383529995335266,
+        "top_results": [
+          "ts_33501 \u00a76.12.3",
+          "ts_33501 \u00a76.12.3",
+          "ts_23501 \u00a75.21.2.2.1",
+          "ts_23502 \u00a74.2.2.2.2",
+          "ts_23501 \u00a75.9.3"
+        ]
+      },
+      {
+        "id": "q49",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.02909259998705238,
+        "top_results": [
+          "ts_33501 \u00a76.12.5",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a75.8.2"
+        ]
+      },
+      {
+        "id": "q50",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.039940199989359826,
+        "top_results": [
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a77.2.1",
+          "ts_33501 \u00a76.2.1"
+        ]
+      },
+      {
+        "id": "q51",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03187509998679161,
+        "top_results": [
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.7"
+        ]
+      },
+      {
+        "id": "q52",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.037648300000000745,
+        "top_results": [
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3"
+        ]
+      },
+      {
+        "id": "q53",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.024623700010124594,
+        "top_results": [
+          "ts_33501 \u00a75.1.1",
+          "ts_23502 \u00a74.23.9.3",
+          "ts_33501 \u00a76.7.2",
+          "ts_23502 \u00a74.23.9.2",
+          "ts_33501 \u00a75.9.3.1"
+        ]
+      },
+      {
+        "id": "q54",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03622269997140393,
+        "top_results": [
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.1.3.2",
+          "ts_33501 \u00a76.7.2"
+        ]
+      },
+      {
+        "id": "q55",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.03505730000324547,
+        "top_results": [
+          "ts_33501 \u00a76.5.1",
+          "ts_33501 \u00a75.2.3",
+          "ts_33501 \u00a76.4.3.2",
+          "ts_33501 \u00a75.3.3",
+          "ts_38300 \u00a713.1"
+        ]
+      },
+      {
+        "id": "q56",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.028970499988645315,
+        "top_results": [
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.2.2.1",
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.2.2.1"
+        ]
+      },
+      {
+        "id": "q57",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.042032600031234324,
+        "top_results": [
+          "ts_33501 \u00a75.2.5",
+          "ts_33501 \u00a76.12.5",
+          "ts_33501 \u00a75.2.5",
+          "ts_33501 \u00a7C.4.4.2",
+          "ts_33501 \u00a7C.4.3.2"
+        ]
+      },
+      {
+        "id": "q58",
+        "topic": "security",
+        "first_relevant_rank": 10,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.1,
+        "seconds": 0.03363670001272112,
+        "top_results": [
+          "ts_23501 \u00a75.10.2.1",
+          "ts_33501 \u00a76.9.5.2",
+          "ts_33501 \u00a76.1.3.2",
+          "ts_23502 \u00a74.12.2.2",
+          "ts_33501 \u00a75.6"
+        ]
+      }
+    ],
+    "Hybrid + rerank": [
+      {
+        "id": "q01",
+        "topic": "radio_access",
+        "first_relevant_rank": 6,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.16666666666666666,
+        "seconds": 1.1624969000113197,
+        "top_results": [
+          "ts_23501 \u00a74.2.8.1",
+          "ts_38300 \u00a71",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1"
+        ]
+      },
+      {
+        "id": "q02",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.561881799949333,
+        "top_results": [
+          "ts_38300 \u00a75.1",
+          "ts_38300 \u00a75.3.1",
+          "ts_38300 \u00a7B.3",
+          "ts_38300 \u00a716.14.9",
+          "ts_38300 \u00a716.9.4.1"
+        ]
+      },
+      {
+        "id": "q03",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 1.3230834999703802,
+        "top_results": [
+          "ts_38300 \u00a716.9.2.5",
+          "ts_38300 \u00a76.5",
+          "ts_38300 \u00a76.1",
+          "ts_38300 \u00a716.10.3",
+          "ts_38300 \u00a76.1"
+        ]
+      },
+      {
+        "id": "q04",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 1.3518885999801569,
+        "top_results": [
+          "ts_38300 \u00a75.1",
+          "ts_38300 \u00a76.10",
+          "ts_38300 \u00a75.2.3",
+          "ts_38300 \u00a716.10.6.6",
+          "ts_23501 \u00a75.43.4"
+        ]
+      },
+      {
+        "id": "q05",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.2703879000036977,
+        "top_results": [
+          "ts_38300 \u00a76.4.1",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a76.11.1",
+          "ts_38300 \u00a716.9.2.4",
+          "ts_38300 \u00a76.5"
+        ]
+      },
+      {
+        "id": "q06",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.3811725999694318,
+        "top_results": [
+          "ts_38300 \u00a76.3",
+          "ts_38300 \u00a716.12.5.1",
+          "ts_38300 \u00a76.3.2",
+          "ts_38300 \u00a716.9.2.3",
+          "ts_38300 \u00a716.10.3"
+        ]
+      },
+      {
+        "id": "q07",
+        "topic": "radio_access",
+        "first_relevant_rank": 8,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 1.0,
+        "rr": 0.125,
+        "seconds": 1.0130897000199184,
+        "top_results": [
+          "ts_38300 \u00a79.2.5",
+          "ts_38300 \u00a79.2.10",
+          "ts_38300 \u00a79.2.5",
+          "ts_38300 \u00a716.10.5.2",
+          "ts_38300 \u00a79.2.2.1"
+        ]
+      },
+      {
+        "id": "q08",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.657870199996978,
+        "top_results": [
+          "ts_38300 \u00a79.2.6",
+          "ts_38300 \u00a79.2.6",
+          "ts_38300 \u00a79.2.6",
+          "ts_38300 \u00a79.2.6",
+          "ts_23501 \u00a75.3.4.3.3"
+        ]
+      },
+      {
+        "id": "q09",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1328338999883272,
+        "top_results": [
+          "ts_38300 \u00a79.2.7",
+          "ts_38300 \u00a716.21.3.2",
+          "ts_38300 \u00a79.2.7",
+          "ts_38300 \u00a716.12.5.2",
+          "ts_38300 \u00a79.2.3.3"
+        ]
+      },
+      {
+        "id": "q10",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.3950657999957912,
+        "top_results": [
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a79.2.8",
+          "ts_38300 \u00a716.12.5.2"
+        ]
+      },
+      {
+        "id": "q11",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.8237119000405073,
+        "top_results": [
+          "ts_38300 \u00a711",
+          "ts_38300 \u00a711",
+          "ts_38300 \u00a716.9.6.2",
+          "ts_38300 \u00a716.9.6.1",
+          "ts_38300 \u00a716.9.6.3"
+        ]
+      },
+      {
+        "id": "q12",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.3927520000142977,
+        "top_results": [
+          "ts_38300 \u00a716.4",
+          "ts_38300 \u00a72",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23502 \u00a75.2.6.21.1",
+          "ts_23502 \u00a74.25.5"
+        ]
+      },
+      {
+        "id": "q13",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1514603000250645,
+        "top_results": [
+          "ts_38300 \u00a76.2.4",
+          "ts_38300 \u00a716.14.9",
+          "ts_38300 \u00a75.2.5.4",
+          "ts_38300 \u00a716.14.2.1",
+          "ts_38300 \u00a716.10.1"
+        ]
+      },
+      {
+        "id": "q14",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1290320000262,
+        "top_results": [
+          "ts_38300 \u00a75.4.2",
+          "ts_38300 \u00a76.9",
+          "ts_38300 \u00a7B",
+          "ts_23501 \u00a75.27.2.1",
+          "ts_38300 \u00a710.3"
+        ]
+      },
+      {
+        "id": "q15",
+        "topic": "radio_access",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.9664249999914318,
+        "top_results": [
+          "ts_38300 \u00a716.10.5.2",
+          "ts_38300 \u00a79.2.2.1",
+          "ts_38300 \u00a716.10.5.2",
+          "ts_38300 \u00a718.2",
+          "ts_38300 \u00a79.2.2.6"
+        ]
+      },
+      {
+        "id": "q16",
+        "topic": "radio_access",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.9905252999742515,
+        "top_results": [
+          "ts_33501 \u00a75.2.3",
+          "ts_38300 \u00a713.1",
+          "ts_33501 \u00a75.11.2",
+          "ts_33501 \u00a75.2.3",
+          "ts_33501 \u00a75.3.3"
+        ]
+      },
+      {
+        "id": "q17",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1229185999836773,
+        "top_results": [
+          "ts_38300 \u00a76.2.1",
+          "ts_38300 \u00a716.9.2.2",
+          "ts_38300 \u00a76.11.1",
+          "ts_38300 \u00a76.4.1",
+          "ts_38300 \u00a76.3.2"
+        ]
+      },
+      {
+        "id": "q18",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9678864000015892,
+        "top_results": [
+          "ts_38300 \u00a77.3.3",
+          "ts_23502 \u00a74.15.3.2.3",
+          "ts_23501 \u00a75.3.4.4",
+          "ts_38300 \u00a716.10.6.2",
+          "ts_23502 \u00a74.15.3.1"
+        ]
+      },
+      {
+        "id": "q19",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1441333999973722,
+        "top_results": [
+          "ts_38300 \u00a75.3.4",
+          "ts_38300 \u00a75.3.4",
+          "ts_38300 \u00a73.2",
+          "ts_38300 \u00a79.2.6",
+          "ts_38300 \u00a79.2.6"
+        ]
+      },
+      {
+        "id": "q20",
+        "topic": "radio_access",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.025105899956543,
+        "top_results": [
+          "ts_38300 \u00a716.14.1",
+          "ts_38300 \u00a7B.4",
+          "ts_38300 \u00a7B.4",
+          "ts_38300 \u00a716.14.4.1",
+          "ts_38300 \u00a7B.4"
+        ]
+      },
+      {
+        "id": "q21",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 0.9950585999758914,
+        "top_results": [
+          "ts_23501 \u00a75.19.5.1",
+          "ts_23501 \u00a76.2.1",
+          "ts_23502 \u00a74.16.11.1",
+          "ts_23502 \u00a74.11.0",
+          "ts_23501 \u00a76.2.1"
+        ]
+      },
+      {
+        "id": "q22",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 1.483860500040464,
+        "top_results": [
+          "ts_23501 \u00a75.32.6.2.1",
+          "ts_23501 \u00a75.32.2",
+          "ts_23501 \u00a75.30.2.10.4",
+          "ts_23501 \u00a75.32.2",
+          "ts_23501 \u00a75.32.6.2.2"
+        ]
+      },
+      {
+        "id": "q23",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 1.4350689999992028,
+        "top_results": [
+          "ts_23501 \u00a75.8.2.4.1",
+          "ts_23501 \u00a76.2.3",
+          "ts_23501 \u00a74.2.4",
+          "ts_23501 \u00a75.8.2.14",
+          "ts_23501 \u00a75.8.2.2.1"
+        ]
+      },
+      {
+        "id": "q24",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.0463988999836147,
+        "top_results": [
+          "ts_23501 \u00a76.2.4",
+          "ts_23502 \u00a71",
+          "ts_38300 \u00a74.1",
+          "ts_23501 \u00a76.2.10",
+          "ts_23502 \u00a75.2.5.4.1"
+        ]
+      },
+      {
+        "id": "q25",
+        "topic": "architecture",
+        "first_relevant_rank": null,
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "rr": 0.0,
+        "seconds": 1.6120560000417754,
+        "top_results": [
+          "ts_33501 \u00a76.2.2.2",
+          "ts_33501 \u00a76.12.5",
+          "ts_23501 \u00a75.30.2.9.2",
+          "ts_23501 \u00a75.30.2.9.2",
+          "ts_33501 \u00a75.8.2"
+        ]
+      },
+      {
+        "id": "q26",
+        "topic": "architecture",
+        "first_relevant_rank": 5,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.2,
+        "seconds": 1.1752383999992162,
+        "top_results": [
+          "ts_23502 \u00a75.2.10.2.1",
+          "ts_33501 \u00a75.8.2",
+          "ts_23502 \u00a75.2.10.3.1",
+          "ts_23502 \u00a75.2.10.4.1",
+          "ts_23501 \u00a76.2.8"
+        ]
+      },
+      {
+        "id": "q27",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9651143999653868,
+        "top_results": [
+          "ts_23501 \u00a76.2.14",
+          "ts_23501 \u00a75.15.5.3",
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23501 \u00a75.15.5.2.1",
+          "ts_23501 \u00a75.15.5.2.1"
+        ]
+      },
+      {
+        "id": "q28",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9562779999687336,
+        "top_results": [
+          "ts_23501 \u00a76.2.17",
+          "ts_33501 \u00a74.2.1",
+          "ts_33501 \u00a713.2.3.6",
+          "ts_33501 \u00a75.9.3.2",
+          "ts_33501 \u00a7G.1"
+        ]
+      },
+      {
+        "id": "q29",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.3796062000328675,
+        "top_results": [
+          "ts_23501 \u00a76.2.18",
+          "ts_33501 \u00a7X.8.1",
+          "ts_23501 \u00a76.3.13",
+          "ts_23501 \u00a77.2.12",
+          "ts_23501 \u00a76.3.13"
+        ]
+      },
+      {
+        "id": "q30",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.009146700031124,
+        "top_results": [
+          "ts_23501 \u00a76.2.19",
+          "ts_33501 \u00a75.9.2.4",
+          "ts_23501 \u00a76.3.1",
+          "ts_23501 \u00a7G.2.1",
+          "ts_23501 \u00a76.2.17"
+        ]
+      },
+      {
+        "id": "q31",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.3530724000302143,
+        "top_results": [
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_23501 \u00a74.2.8.1",
+          "ts_33501 \u00a77.2.1",
+          "ts_23501 \u00a74.2.8.1"
+        ]
+      },
+      {
+        "id": "q32",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1441530999727547,
+        "top_results": [
+          "ts_23501 \u00a75.7.4",
+          "ts_23501 \u00a75.7.4",
+          "ts_23501 \u00a75.7.4",
+          "ts_23501 \u00a75.7.4",
+          "ts_23501 \u00a75.7.4"
+        ]
+      },
+      {
+        "id": "q33",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.014895099971909,
+        "top_results": [
+          "ts_23501 \u00a75.9.2",
+          "ts_23501 \u00a75.9.2",
+          "ts_33501 \u00a76.12.1",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a76.12.2"
+        ]
+      },
+      {
+        "id": "q34",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9414210999966599,
+        "top_results": [
+          "ts_23501 \u00a75.9.3",
+          "ts_23502 \u00a74.2.2.2.1",
+          "ts_23501 \u00a75.6.2",
+          "ts_23502 \u00a74.16.11.1",
+          "ts_23502 \u00a74.2.2.2.2"
+        ]
+      },
+      {
+        "id": "q35",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.0208382999990135,
+        "top_results": [
+          "ts_23501 \u00a75.6.13",
+          "ts_23501 \u00a75.6.13",
+          "ts_23502 \u00a74.3.2.2",
+          "ts_23502 \u00a74.3.2.2.2",
+          "ts_23502 \u00a74.3.3.2"
+        ]
+      },
+      {
+        "id": "q36",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.5839505000039935,
+        "top_results": [
+          "ts_23501 \u00a75.13",
+          "ts_33501 \u00a7T.1",
+          "ts_23501 \u00a75.13",
+          "ts_23501 \u00a72",
+          "ts_23501 \u00a75.43.1"
+        ]
+      },
+      {
+        "id": "q37",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9496348000247963,
+        "top_results": [
+          "ts_23501 \u00a76.3.5",
+          "ts_23501 \u00a76.3.7.0",
+          "ts_23501 \u00a75.46.2",
+          "ts_23501 \u00a76.3.5",
+          "ts_23501 \u00a7F"
+        ]
+      },
+      {
+        "id": "q38",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9910937999957241,
+        "top_results": [
+          "ts_23501 \u00a75.6.9.2.3",
+          "ts_23501 \u00a75.6.9.2.3",
+          "ts_23501 \u00a75.6.9.3",
+          "ts_23501 \u00a75.6.9.1",
+          "ts_23501 \u00a75.34.1"
+        ]
+      },
+      {
+        "id": "q39",
+        "topic": "architecture",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.8991157000418752,
+        "top_results": [
+          "ts_23502 \u00a74.3.5.1",
+          "ts_23502 \u00a74.3.5.1",
+          "ts_23502 \u00a74.3.5.2",
+          "ts_23501 \u00a75.6.9.2.2",
+          "ts_23502 \u00a74.3.5.1"
+        ]
+      },
+      {
+        "id": "q40",
+        "topic": "architecture",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9084473999682814,
+        "top_results": [
+          "ts_23501 \u00a75.15.2.1",
+          "ts_23501 \u00a75.15.3",
+          "ts_23501 \u00a75.15.12.1",
+          "ts_23501 \u00a75.15.4.1.1",
+          "ts_23501 \u00a75.15.9"
+        ]
+      },
+      {
+        "id": "q41",
+        "topic": "architecture",
+        "first_relevant_rank": 2,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.5,
+        "seconds": 1.2183123000431806,
+        "top_results": [
+          "ts_23501 \u00a74.2.8.3.1",
+          "ts_23501 \u00a74.2.7",
+          "ts_23501 \u00a74.2.8.5.4",
+          "ts_23501 \u00a7D.3",
+          "ts_23501 \u00a74.2.3"
+        ]
+      },
+      {
+        "id": "q42",
+        "topic": "procedures",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9561349999858066,
+        "top_results": [
+          "ts_23502 \u00a74.2.3.2",
+          "ts_23502 \u00a74.2.3.1",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23502 \u00a74.2.3.3",
+          "ts_23501 \u00a75.19.7.2"
+        ]
+      },
+      {
+        "id": "q43",
+        "topic": "procedures",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 1.545282200037036,
+        "top_results": [
+          "ts_23502 \u00a74.23.8",
+          "ts_23502 \u00a74.22.10.1",
+          "ts_23502 \u00a74.2.6",
+          "ts_23502 \u00a74.4.1.4",
+          "ts_23502 \u00a74.12.4.2"
+        ]
+      },
+      {
+        "id": "q44",
+        "topic": "procedures",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.0019884000066668,
+        "top_results": [
+          "ts_23501 \u00a77.1.5",
+          "ts_23501 \u00a77.1.5",
+          "ts_33501 \u00a713.4.1.1.1",
+          "ts_33501 \u00a713.4.1.1.1",
+          "ts_33501 \u00a75.9.2.2"
+        ]
+      },
+      {
+        "id": "q45",
+        "topic": "procedures",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1796301000285894,
+        "top_results": [
+          "ts_23502 \u00a74.2.2.3.3",
+          "ts_23502 \u00a74.2.2.3.3",
+          "ts_23502 \u00a75.2.21.2.2",
+          "ts_23501 \u00a75.35.1",
+          "ts_23501 \u00a7N.5"
+        ]
+      },
+      {
+        "id": "q46",
+        "topic": "procedures",
+        "first_relevant_rank": 3,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.3333333333333333,
+        "seconds": 1.067306799988728,
+        "top_results": [
+          "ts_23501 \u00a75.3.2.1",
+          "ts_23501 \u00a75.3.1",
+          "ts_23502 \u00a74.2.2.2.1",
+          "ts_23502 \u00a74.2.1",
+          "ts_23502 \u00a74.2.9.1"
+        ]
+      },
+      {
+        "id": "q47",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1329275000025518,
+        "top_results": [
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a7B.2.1.2.2",
+          "ts_23501 \u00a75.9.2",
+          "ts_33501 \u00a76.12.4",
+          "ts_23501 \u00a76.3.8"
+        ]
+      },
+      {
+        "id": "q48",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9237905999762006,
+        "top_results": [
+          "ts_33501 \u00a76.12.3",
+          "ts_33501 \u00a76.12.3",
+          "ts_23502 \u00a74.2.2.2.2",
+          "ts_23502 \u00a74.2.2.2.2",
+          "ts_23502 \u00a74.2.2.2.2"
+        ]
+      },
+      {
+        "id": "q49",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.5257385000004433,
+        "top_results": [
+          "ts_33501 \u00a76.12.5",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a76.12.2",
+          "ts_33501 \u00a75.8.2",
+          "ts_23501 \u00a75.9.2"
+        ]
+      },
+      {
+        "id": "q50",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.1389602000126615,
+        "top_results": [
+          "ts_33501 \u00a76.2.1",
+          "ts_33501 \u00a76.9.4.1",
+          "ts_33501 \u00a77.2.1",
+          "ts_33501 \u00a76.2.3.2",
+          "ts_33501 \u00a76.2.1"
+        ]
+      },
+      {
+        "id": "q51",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.8561812000116333,
+        "top_results": [
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.4.6",
+          "ts_33501 \u00a76.8.1.2.1",
+          "ts_33501 \u00a76.4.6"
+        ]
+      },
+      {
+        "id": "q52",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.8747750000329688,
+        "top_results": [
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.10.3",
+          "ts_23501 \u00a75.6.13"
+        ]
+      },
+      {
+        "id": "q53",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.8646078000310808,
+        "top_results": [
+          "ts_33501 \u00a75.1.1",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a75.9.3.1",
+          "ts_33501 \u00a76.1.3.2",
+          "ts_33501 \u00a7B.2.1.1"
+        ]
+      },
+      {
+        "id": "q54",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.8562205999623984,
+        "top_results": [
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.7.2",
+          "ts_33501 \u00a76.1.3.2"
+        ]
+      },
+      {
+        "id": "q55",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 0.9447486000135541,
+        "top_results": [
+          "ts_33501 \u00a76.5.1",
+          "ts_33501 \u00a75.3.3",
+          "ts_33501 \u00a7M.2.2",
+          "ts_33501 \u00a75.2.3",
+          "ts_33501 \u00a7M.2.1"
+        ]
+      },
+      {
+        "id": "q56",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.21288500004448,
+        "top_results": [
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.2.2.4.2",
+          "ts_33501 \u00a713.2.2.1",
+          "ts_33501 \u00a713.1.2",
+          "ts_33501 \u00a713.1.2"
+        ]
+      },
+      {
+        "id": "q57",
+        "topic": "security",
+        "first_relevant_rank": 1,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 1.0,
+        "seconds": 1.5591762999538332,
+        "top_results": [
+          "ts_33501 \u00a75.2.5",
+          "ts_33501 \u00a76.12.5",
+          "ts_33501 \u00a75.2.5",
+          "ts_33501 \u00a76.2.2.2",
+          "ts_33501 \u00a75.12"
+        ]
+      },
+      {
+        "id": "q58",
+        "topic": "security",
+        "first_relevant_rank": 4,
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "rr": 0.25,
+        "seconds": 0.9282336999895051,
+        "top_results": [
+          "ts_23501 \u00a75.10.2.1",
+          "ts_33501 \u00a76.9.5.2",
+          "ts_33501 \u00a76.2.2.1",
+          "ts_33501 \u00a74.3",
+          "ts_33501 \u00a77.2.1"
+        ]
+      }
+    ]
+  }
+}

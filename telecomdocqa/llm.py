@@ -11,7 +11,8 @@ from telecomdocqa import config
 
 
 class LLMClient:
-    def __init__(self, model=config.LLM_MODEL, base_url=config.LLM_BASE_URL, api_key=config.LLM_API_KEY):
+    def __init__(self, model=config.LLM_MODEL, base_url=config.LLM_BASE_URL, api_key=config.LLM_API_KEY,
+                 reasoning_effort=config.LLM_REASONING_EFFORT):
         if not api_key:
             raise ValueError(
                 "No API key found. Create a .env file in the project root with:\n"
@@ -19,6 +20,7 @@ class LLMClient:
                 "(see .env.example)"
             )
         self.model = model
+        self.reasoning_effort = reasoning_effort
         # max_retries: if we hit the free tier's rate limit, the library
         # waits a bit and tries again instead of crashing.
         self.client = OpenAI(api_key=api_key, base_url=base_url, max_retries=config.LLM_MAX_RETRIES)
@@ -31,8 +33,8 @@ class LLMClient:
             "temperature": temperature,
             "max_tokens": max_tokens,
         }
-        if config.LLM_REASONING_EFFORT:
-            request["reasoning_effort"] = config.LLM_REASONING_EFFORT
+        if self.reasoning_effort:
+            request["reasoning_effort"] = self.reasoning_effort
         return request
 
     def chat(self, messages, temperature=config.LLM_TEMPERATURE, max_tokens=config.LLM_MAX_TOKENS):

@@ -15,12 +15,15 @@ from telecomdocqa import config
 
 # "5", "5.2", "5.2.1.3" or "A.1", "B.2.3" followed by a title starting with a capital letter
 HEADING_RE = re.compile(r"^(\d{1,2}(?:\.\d+){0,5}|[A-Z](?:\.\d+){1,5})\s+([A-Z].{1,100})$")
-# "Annex A (informative): Deployment scenarios"
-ANNEX_RE = re.compile(r"^Annex ([A-Z])\b[^:]*:?\s*(.*)$")
+# "Annex A (informative): Deployment scenarios". Real annex headings always
+# say (normative) or (informative); a sentence like "Annex C describes ..." doesn't.
+ANNEX_RE = re.compile(r"^Annex ([A-Z]{1,2})\s*\((?:normative|informative)\)\s*:?\s*(.*)$")
 # Table-of-contents lines end with dot leaders and a page number: "5.2 General ........ 25"
 TOC_RE = re.compile(r"\.{4,}\s*\d+\s*$")
 # A line that is only a page number
 PAGE_NUMBER_RE = re.compile(r"^\d{1,4}$")
+# The section number at the start of a contents line: "5.2.1", "A.3" or "Annex B"
+TOC_NUMBER_RE = re.compile(r"^(?:Annex ([A-Z]{1,2})\b|(\d{1,2}(?:\.\d+)*|[A-Z]{1,2}(?:\.\d+)+)\s)")
 
 
 def load_pdf_pages(pdf_path):
@@ -56,6 +59,50 @@ def find_repeated_patterns(pages):
 
     min_pages = len(pages) * config.HEADER_FOOTER_THRESHOLD
     return {pattern for pattern, count in counts.items() if count >= min_pages}
+
+
+def first_word(text):
+    """Lowercase first word, used to compare a heading with its contents entry."""
+    words = re.findall(r"[a-z0-9]+", text.lower())
+    return words[0] if words else ""
+
+
+def read_toc(pages):
+    """Read the table of contents: {section number: first word of its title}.
+
+    Contents lines end with dot leaders and a page number:
+        "5.2.1 General .................. 25"
+    Long entries wrap, so the number is sometimes on the line before:
+        "4.2.9.3 AAA Server triggered Network Slice-Specific"
+        "Re-authentication procedure ........ 105"
+    """
+    toc = {}
+    for page_text in pages:
+        lines = [" ".join(l.split()) for l in page_text.splitlines() if l.strip()]
+        for i, line in enumerate(lines):
+            if not TOC_RE.search(line):
+                continue
+            entry = line
+            match = TOC_NUMBER_RE.match(line)
+            if not match and i > 0:
+                entry = lines[i - 1]  # wrapped entry: the number is on the line before
+                match = TOC_NUMBER_RE.match(entry)
+            if match:
+                number = match.group(1) or match.group(2)
+                toc[number] = first_word(entry[match.end():])
+    return toc
+
+
+def matches_toc(number, title, toc):
+    """True if this heading is listed in the contents with the same first word.
+    Annex headings ("Annex B: ...") only need their letter to be listed."""
+    if not toc:
+        return True  # no contents found: accept every heading-like line
+    if number not in toc:
+        return False
+    if not number[0].isdigit() and "." not in number:
+        return True
+    return first_word(title) == toc[number]
 
 
 def clean_pages(pages):
@@ -106,8 +153,13 @@ def parse_heading(line):
     return number, title
 
 
-def split_into_sections(lines):
+def split_into_sections(lines, toc=None):
     """Group (page_number, line) pairs into sections using the headings.
+
+    Numbered table rows ("5 Non-GBR 10 100 ms") and procedure steps
+    ("4 Namf_Communication_UEContextTransfer") can look like headings, so a
+    heading only counts if the spec's table of contents lists the same
+    number with a title starting with the same word.
 
     Every 3GPP spec starts its real content with "1 Scope". Everything
     before that (cover page, contents pages, foreword) goes into a
@@ -123,9 +175,10 @@ def split_into_sections(lines):
 
     sections = []
     current = {"section_number": "0", "section_title": "Front matter", "lines": list(lines[:start])}
-
     for page_number, line in lines[start:]:
         heading = parse_heading(line)
+        if heading and not matches_toc(heading[0], heading[1], toc):
+            heading = None  # looks like a heading but isn't in the contents
         if heading:
             sections.append(current)
             number, title = heading
@@ -141,6 +194,7 @@ def split_into_sections(lines):
 def load_document_sections(pdf_path):
     """Full pipeline for one PDF: pages -> cleaned lines -> sections."""
     pages = load_pdf_pages(pdf_path)
+    toc = read_toc(pages)
     lines = clean_pages(pages)
-    sections = split_into_sections(lines)
+    sections = split_into_sections(lines, toc)
     return pages, sections

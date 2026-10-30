@@ -77,3 +77,25 @@ citations to sources that don't exist are flagged. If the best chunk's
 rerank score is too low, the system answers "not found" without calling the
 LLM, so it doesn't guess. Any OpenAI-compatible provider can be used by
 changing `LLM_BASE_URL` and `LLM_MODEL` in `.env`.
+
+## Step 5: Evaluation harness
+
+68 questions (58 answerable, 10 unanswerable) with gold spec sections and
+reference answers live in `data/eval/questions.jsonl` (see `data/eval/README.md`).
+
+```bash
+python -m telecomdocqa.eval_retrieval              # retrieval ablation, no LLM needed
+python -m telecomdocqa.eval_answers --limit 5      # quick test of the answer evaluation
+python -m telecomdocqa.eval_answers                # full run (use --resume if it stops)
+```
+
+| Area | Metrics |
+|---|---|
+| Retrieval | Recall@1/5/10 and MRR@10 for BM25, dense, hybrid and hybrid + rerank |
+| Answers | Answer correctness vs. reference, faithfulness to sources, citation precision, made-up citations |
+| Refusals | "Not found" accuracy on unanswerable questions, wrong refusals on answerable ones |
+| Speed | p50 / p95 latency for search and end-to-end answers |
+
+Correctness and faithfulness are graded by an LLM judge (`qwen/qwen3.8-27b`)
+that is a different model from the answer model, to avoid self-grading bias.
+Reports are saved to `data/eval/results/`.

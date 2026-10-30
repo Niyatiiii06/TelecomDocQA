@@ -74,7 +74,18 @@ LLM_MAX_RETRIES = 6         # free tiers have per-minute limits; the client wait
 ANSWER_TOP_K = 5
 # If even the best chunk scores below this, we say "not found" without
 # calling the LLM (e.g. for "What's the best pizza in Delhi?").
-# The cross-encoder gives clearly irrelevant chunks scores around -10.
-# We tune this value with the evaluation set in step 5.
-MIN_RERANK_SCORE = -5.0
+# Tuned on the evaluation set (step 5): every answerable question's best
+# chunk scored >= 0.24 and every unanswerable one <= -2.45, so -1.0 sits in
+# the gap. Re-check this if you change the reranker or the questions.
+MIN_RERANK_SCORE = -1.0
 NOT_FOUND_MESSAGE = "I couldn't find this in the provided 3GPP specifications."
+
+# ---------------- Step 5: evaluation ----------------
+EVAL_DIR = DATA_DIR / "eval"
+EVAL_QUESTIONS_PATH = EVAL_DIR / "questions.jsonl"
+EVAL_RESULTS_DIR = EVAL_DIR / "results"
+# The judge grades answers. We use a DIFFERENT model from the one that writes
+# the answers, because a model grading its own answers tends to be too kind.
+JUDGE_MODEL = os.getenv("JUDGE_MODEL", "qwen/qwen3.8-27b")
+JUDGE_REASONING_EFFORT = os.getenv("JUDGE_REASONING_EFFORT", "")  # "" = provider default
+JUDGE_MAX_TOKENS = 3000
