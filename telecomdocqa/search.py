@@ -5,6 +5,7 @@ Examples (run from the project root):
     python -m telecomdocqa.search "How is SUPI concealed?" --topic security
     python -m telecomdocqa.search "registration procedure" --doc ts_23502 --section 4.2
     python -m telecomdocqa.search "N2 interface" --mode bm25
+    python -m telecomdocqa.search "What is the role of the AMF?" --no-rerank
 """
 
 import argparse
@@ -56,7 +57,10 @@ def print_results(results):
     for i, r in enumerate(results, start=1):
         pages = f"p.{r['page_start']}" if r["page_start"] == r["page_end"] else f"pp.{r['page_start']}-{r['page_end']}"
         print(f"\n[{i}] {r['spec']} §{r['section_number']} {r['section_title']} ({pages})")
-        print(f"    score={r['score']}  dense_rank={r['dense_rank']}  bm25_rank={r['bm25_rank']}")
+        scores = f"    score={r['score']}  dense_rank={r['dense_rank']}  bm25_rank={r['bm25_rank']}"
+        if "rerank_score" in r:
+            scores += f"  rerank_score={r['rerank_score']}  (was #{r['retrieval_rank']} before reranking)"
+        print(scores)
         print("   ", preview(r["text"]))
 
 
@@ -68,11 +72,15 @@ def main():
     parser.add_argument("--topic", help="radio_access, architecture, procedures or security")
     parser.add_argument("--section", help="e.g. 5.2 (also matches 5.2.1, 5.2.2 ...)")
     parser.add_argument("--mode", choices=["hybrid", "dense", "bm25"], default="hybrid")
+    parser.add_argument("--no-rerank", action="store_true", help="skip the cross-encoder (step 3)")
     args = parser.parse_args()
 
-    retriever = load_retriever()
+    from telecomdocqa.pipeline import load_pipeline
+
+    pipeline = load_pipeline(use_reranker=not args.no_rerank)
     filters = build_filters(args.doc, args.topic, args.section)
-    results = retriever.search(args.query, top_k=args.top_k, filters=filters, mode=args.mode)
+    results = pipeline.search(args.query, top_k=args.top_k, filters=filters,
+                              mode=args.mode, rerank=not args.no_rerank)
     print_results(results)
 
 

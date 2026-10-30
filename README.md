@@ -44,3 +44,16 @@ python -m telecomdocqa.search "N2 interface" --mode bm25     # compare: --mode d
 - **BM25 keyword retrieval:** a telecom-aware tokenizer keeps terms like `n2`, `ng-ran` and `s-nssai` intact.
 - **Fusion:** Reciprocal Rank Fusion (k = 60) merges the two ranked lists using ranks, not raw scores.
 - **Metadata filters:** by document (`--doc`), topic (`--topic`) and section prefix (`--section 5.2` also matches 5.2.1 ...).
+
+## Step 3: Cross-encoder reranking
+
+```bash
+python -m telecomdocqa.search "What is the role of the AMF?"              # hybrid + reranking
+python -m telecomdocqa.search "What is the role of the AMF?" --no-rerank  # compare without it
+```
+
+Hybrid retrieval returns the top 20 candidates, then a cross-encoder
+(`cross-encoder/ms-marco-MiniLM-L-6-v2`) reads the question and each candidate
+together and reorders them. It's too slow to run over all chunks, but on 20
+candidates it fixes cases where a chunk ranked high only because it shared
+keywords with the question. Each result shows its rank before reranking.

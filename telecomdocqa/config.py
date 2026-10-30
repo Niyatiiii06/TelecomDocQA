@@ -39,3 +39,12 @@ CANDIDATES_PER_RETRIEVER = 30
 RRF_K = 60
 # Default number of final results.
 TOP_K = 5
+
+# ---------------- Step 3: reranking ----------------
+# A cross-encoder reads the question and a chunk *together* and scores how
+# well the chunk answers it. This small model (22M parameters) is fast on a
+# laptop CPU. A stronger but ~10x slower option is "BAAI/bge-reranker-base".
+RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+# How many hybrid results we pass to the reranker. More = better recall but
+# slower, because the cross-encoder runs once per candidate.
+RERANK_CANDIDATES = 20
