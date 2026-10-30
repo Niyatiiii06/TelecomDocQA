@@ -1,6 +1,13 @@
 """All project settings live here, so you only change values in one place."""
 
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+# Read secrets (like the API key) from a .env file in the project root.
+# .env is in .gitignore, so your key never gets committed.
+load_dotenv()
 
 # Folder paths
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -48,3 +55,26 @@ RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 # How many hybrid results we pass to the reranker. More = better recall but
 # slower, because the cross-encoder runs once per candidate.
 RERANK_CANDIDATES = 20
+
+# ---------------- Step 4: grounded answers ----------------
+# Any OpenAI-compatible API works. The defaults use Groq's free tier.
+# To switch provider, change these three values in your .env file.
+LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.groq.com/openai/v1")
+LLM_MODEL = os.getenv("LLM_MODEL", "openai/gpt-oss-120b")
+# gpt-oss is a "reasoning" model: it thinks before answering, and that thinking
+# uses up tokens. "low" keeps answers fast and leaves room for the answer.
+# Set to "" for models that don't support it.
+LLM_REASONING_EFFORT = os.getenv("LLM_REASONING_EFFORT", "low")
+LLM_API_KEY = os.getenv("LLM_API_KEY", "")
+LLM_TEMPERATURE = 0.0       # 0 = same question gives (almost) the same answer, good for evaluation
+LLM_MAX_TOKENS = 2000       # upper limit on thinking + answer length
+LLM_MAX_RETRIES = 6         # free tiers have per-minute limits; the client waits and retries
+
+# How many reranked chunks we give the LLM as sources.
+ANSWER_TOP_K = 5
+# If even the best chunk scores below this, we say "not found" without
+# calling the LLM (e.g. for "What's the best pizza in Delhi?").
+# The cross-encoder gives clearly irrelevant chunks scores around -10.
+# We tune this value with the evaluation set in step 5.
+MIN_RERANK_SCORE = -5.0
+NOT_FOUND_MESSAGE = "I couldn't find this in the provided 3GPP specifications."

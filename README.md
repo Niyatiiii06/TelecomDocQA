@@ -57,3 +57,23 @@ Hybrid retrieval returns the top 20 candidates, then a cross-encoder
 together and reorders them. It's too slow to run over all chunks, but on 20
 candidates it fixes cases where a chunk ranked high only because it shared
 keywords with the question. Each result shows its rank before reranking.
+
+## Step 4: Grounded answers with citations
+
+1. Get a free API key at https://console.groq.com/keys
+2. Copy `.env.example` to `.env` and paste your key into it.
+3. Ask a question:
+
+```bash
+python -m telecomdocqa.answer "What is the role of the AMF?"
+python -m telecomdocqa.answer "How is the SUPI protected over the air?" --topic security
+python -m telecomdocqa.answer "What is the best pizza in Delhi?"   # should say "not found"
+```
+
+The LLM (`openai/gpt-oss-120b` on Groq's free tier) only sees the top 5
+reranked chunks, numbered [1]-[5], and must cite a number after every fact.
+Each citation is checked and mapped back to its spec, section and pages;
+citations to sources that don't exist are flagged. If the best chunk's
+rerank score is too low, the system answers "not found" without calling the
+LLM, so it doesn't guess. Any OpenAI-compatible provider can be used by
+changing `LLM_BASE_URL` and `LLM_MODEL` in `.env`.
