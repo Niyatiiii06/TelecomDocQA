@@ -20,3 +20,22 @@ MIN_SECTION_WORDS = 10     # sections shorter than this (e.g. "Void.") are skipp
 # A line that appears on at least this fraction of pages is treated as a
 # repeated header or footer (e.g. "ETSI TS 138 300 V17.0.0") and removed.
 HEADER_FOOTER_THRESHOLD = 0.5
+
+# ---------------- Step 2: retrieval ----------------
+INDEX_DIR = DATA_DIR / "index"
+CHROMA_DIR = INDEX_DIR / "chroma"
+INDEX_INFO_PATH = INDEX_DIR / "index_info.json"
+COLLECTION_NAME = "telecom_chunks"
+
+# Small, fast embedding model that does well on retrieval benchmarks.
+# It runs fine on a laptop CPU (384-dimensional vectors).
+EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
+# BGE models work best when the *query* (not the documents) has this prefix.
+QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
+
+# How many candidates each retriever (dense and BM25) returns before fusion.
+CANDIDATES_PER_RETRIEVER = 30
+# Reciprocal Rank Fusion constant. 60 is the value from the original RRF paper.
+RRF_K = 60
+# Default number of final results.
+TOP_K = 5

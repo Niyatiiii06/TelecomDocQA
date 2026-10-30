@@ -28,3 +28,19 @@ and the table of contents, splits the text at 3GPP section headings, and writes
 overlapping ~200-word chunks to `data/processed/chunks.jsonl`. Each chunk keeps
 its document, spec number, topic, section and page range for citations and
 filtering.
+
+## Step 2: Hybrid retrieval (dense + BM25) with metadata filters
+
+```bash
+pip install -r requirements.txt
+python -m telecomdocqa.index_builder      # embeds all chunks into ChromaDB (one time, ~5-15 min on CPU)
+python -m telecomdocqa.search "What is the role of the AMF?"
+python -m telecomdocqa.search "How is SUPI concealed?" --topic security
+python -m telecomdocqa.search "registration procedure" --doc ts_23502 --section 4.2
+python -m telecomdocqa.search "N2 interface" --mode bm25     # compare: --mode dense / hybrid
+```
+
+- **Dense retrieval:** `BAAI/bge-small-en-v1.5` embeddings stored in ChromaDB (cosine similarity).
+- **BM25 keyword retrieval:** a telecom-aware tokenizer keeps terms like `n2`, `ng-ran` and `s-nssai` intact.
+- **Fusion:** Reciprocal Rank Fusion (k = 60) merges the two ranked lists using ranks, not raw scores.
+- **Metadata filters:** by document (`--doc`), topic (`--topic`) and section prefix (`--section 5.2` also matches 5.2.1 ...).
