@@ -1,0 +1,14 @@
+# Keep the image small and secrets out of it.
+.env
+.venv/
+.git/
+.github/
+.model_cache/
+__pycache__/
+*.pyc
+data/raw/
+data/processed/
+data/index/
+data/eval/
+tests/
+deploy/

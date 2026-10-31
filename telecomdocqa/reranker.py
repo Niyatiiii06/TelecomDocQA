@@ -8,6 +8,8 @@ A cross-encoder is slower but much more accurate: it reads the question and
 the chunk *together* in one pass, so it can tell whether the chunk actually
 answers the question. That's too slow to run over all 7,700 chunks, so we
 only run it on the top ~20 candidates from hybrid retrieval.
+
+Like the embedder, it runs with ONNX Runtime (fastembed) to keep memory low.
 """
 
 from telecomdocqa import config
@@ -20,8 +22,8 @@ class CrossEncoderReranker:
         if model is not None:
             self.model = model  # lets tests pass in a fake model
         else:
-            from sentence_transformers import CrossEncoder
-            self.model = CrossEncoder(model_name)
+            from fastembed.rerank.cross_encoder import TextCrossEncoder
+            self.model = TextCrossEncoder(model_name, cache_dir=str(config.MODEL_CACHE_DIR))
 
     def rerank(self, query, chunks, top_k=config.TOP_K):
         """Score every (query, chunk) pair and return the top_k chunks,
@@ -29,8 +31,7 @@ class CrossEncoderReranker:
         if not chunks:
             return []
 
-        pairs = [(query, chunk_to_text(chunk)) for chunk in chunks]
-        scores = self.model.predict(pairs)
+        scores = self.model.rerank(query, [chunk_to_text(chunk) for chunk in chunks])
 
         reranked = []
         for chunk, score in zip(chunks, scores):

@@ -8,6 +8,9 @@ Endpoints:
                        sources first, then the answer word by word
     GET  /             a small demo page that uses /ask/stream
 
+Repeated questions are answered from a cache, and new questions are rate
+limited, to protect the free LLM quota of the public demo (see limits.py).
+
 Run from the project root:
     uvicorn telecomdocqa.api:app --reload
 Then open http://127.0.0.1:8000 (demo) or http://127.0.0.1:8000/docs (API docs).
@@ -18,13 +21,14 @@ import re
 from contextlib import asynccontextmanager
 from typing import Annotated
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import FileResponse, StreamingResponse
 from openai import APIError, RateLimitError
 from pydantic import BaseModel, Field, field_validator
 
 from telecomdocqa import config
 from telecomdocqa.chunking import load_manifest
+from telecomdocqa.limits import AnswerCache, RateLimiter
 from telecomdocqa.search import build_filters
 
 # What filters can contain, read from the manifest so it always matches the data.
@@ -109,6 +113,7 @@ class AskResponse(BaseModel):
     invalid_citations: list[int]
     sources: list[Source]
     total_seconds: float
+    cached: bool = False
 
 
 # ---------------- Helpers ----------------
@@ -123,6 +128,23 @@ def sse_event(name, data):
     return f"event: {name}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
 
 
+DONE_FIELDS = ("answer", "found_answer", "citations", "invalid_citations", "total_seconds")
+
+
+def cache_entry(sources, done):
+    """The one shape both /ask and /ask/stream store in, and read from, the cache."""
+    return {"sources": sources, "done": {field: done[field] for field in DONE_FIELDS}}
+
+
+def client_id(http_request):
+    """Who is asking, for rate limiting. Behind a hosting proxy the visitor's
+    address is in the X-Forwarded-For header, not in the connection itself."""
+    forwarded = http_request.headers.get("x-forwarded-for")
+    if forwarded:
+        return forwarded.split(",")[0].strip()
+    return http_request.client.host if http_request.client else "unknown"
+
+
 def llm_error(error):
     """Turn an LLM provider error into a clear HTTP error."""
     if isinstance(error, RateLimitError):
@@ -132,9 +154,11 @@ def llm_error(error):
 
 # ---------------- The app ----------------
 
-def create_app(generator=None):
+def create_app(generator=None, limiter=None, cache=None):
     """Build the app. Tests pass in a fake generator; normally the real
     models are loaded once when the server starts, not on every request."""
+    limiter = limiter or RateLimiter(config.RATE_LIMIT_PER_HOUR, config.DAILY_QUESTION_LIMIT)
+    cache = cache or AnswerCache(config.ANSWER_CACHE_SIZE)
 
     @asynccontextmanager
     async def lifespan(app):
@@ -170,21 +194,50 @@ def create_app(generator=None):
         return [to_source(c) for c in chunks]
 
     @app.post("/ask", response_model=AskResponse)
-    def ask(request: AskRequest):
+    def ask(request: AskRequest, http_request: Request):
+        key = cache.key(request.question, request.filters())
+        cached = cache.get(key)
+        if cached:
+            return {**cached["done"], "sources": cached["sources"], "question": request.question, "cached": True}
+
+        refusal = limiter.check(client_id(http_request))
+        if refusal:
+            raise HTTPException(status_code=429, detail=refusal)
         try:
             result = app.state.generator.answer(request.question, filters=request.filters())
         except APIError as error:
             raise llm_error(error)
+
         result["sources"] = [to_source(c) for c in result["sources"]]
+        if result["found_answer"]:
+            cache.put(key, cache_entry(result["sources"], result))
         return result
 
     @app.get("/ask/stream")
-    def ask_stream(request: Annotated[AskRequest, Query()]):
+    def ask_stream(request: Annotated[AskRequest, Query()], http_request: Request):
+        key = cache.key(request.question, request.filters())
+        cached = cache.get(key)
+        # Checked here, before streaming starts, but reported as an event:
+        # a browser's EventSource can't read the message of an HTTP error.
+        refusal = None if cached else limiter.check(client_id(http_request))
+
         def events():
+            if cached:  # replay the saved answer instantly
+                yield sse_event("sources", cached["sources"])
+                yield sse_event("token", cached["done"]["answer"])
+                yield sse_event("done", {**cached["done"], "cached": True})
+                return
+            if refusal:
+                yield sse_event("error", {"detail": refusal})
+                return
+
+            sources = []
             try:
                 for name, data in app.state.generator.stream_answer(request.question, filters=request.filters()):
                     if name == "sources":
-                        data = [to_source(c) for c in data]
+                        data = sources = [to_source(c) for c in data]
+                    if name == "done" and data["found_answer"]:
+                        cache.put(key, cache_entry(sources, data))
                     yield sse_event(name, data)
             except APIError as error:
                 # The response has already started, so we can't change the

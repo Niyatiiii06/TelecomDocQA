@@ -69,11 +69,11 @@ class FakeEmbedder:
 
 
 class FakeCrossEncoder:
-    """Scores a (question, text) pair by how many words they share,
+    """Scores each text by how many words it shares with the question,
     minus 3, so unrelated text gets a negative score like the real model."""
 
-    def predict(self, pairs):
-        return [len(set(tokenize(q)) & set(tokenize(t))) - 3.0 for q, t in pairs]
+    def rerank(self, query, documents):
+        return [len(set(tokenize(query)) & set(tokenize(text))) - 3.0 for text in documents]
 
 
 class FakeLLM:

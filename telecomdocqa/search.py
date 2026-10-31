@@ -30,6 +30,9 @@ def load_retriever():
               "Re-run: python -m telecomdocqa.index_builder")
 
     info = json.loads(config.INDEX_INFO_PATH.read_text(encoding="utf-8"))
+    if info.get("backend") != config.EMBEDDING_BACKEND:
+        print("WARNING: the index was built with a different model backend. "
+              "Re-run: python -m telecomdocqa.index_builder")
     embedder = Embedder(info["embedding_model"])  # same model the index was built with
 
     dense = DenseRetriever(collection, embedder)

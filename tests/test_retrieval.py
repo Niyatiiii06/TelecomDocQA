@@ -111,3 +111,17 @@ def test_pipeline_without_reranking(hybrid, fake_cross_encoder):
     pipeline = SearchPipeline(hybrid, CrossEncoderReranker(model=fake_cross_encoder))
     results = pipeline.search("AMF", top_k=3, rerank=False)
     assert len(results) <= 3 and all("rerank_score" not in r for r in results)
+
+
+def test_compact_bm25_matches_rank_bm25(chunks):
+    """Our memory-saving BM25 must give the same scores as the rank_bm25 library."""
+    import numpy as np
+    from rank_bm25 import BM25Okapi
+
+    from telecomdocqa.retrievers import BM25Index, chunk_to_text
+
+    docs = [tokenize(chunk_to_text(c)) for c in chunks]
+    ours, reference = BM25Index(iter(docs)), BM25Okapi(docs)
+    for query in ["AMF registration", "UE IP address session", "network slice S-NSSAI", "TS 23.501", "unknownword"]:
+        words = tokenize(query)
+        assert np.allclose(ours.get_scores(words), reference.get_scores(words))

@@ -14,3 +14,8 @@ data/index/
 .vscode/
 .idea/
 .DS_Store
+
+# Downloaded models and tool caches
+.model_cache/
+.pytest_cache/
+.ruff_cache/

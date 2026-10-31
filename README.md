@@ -130,7 +130,7 @@ curl -N "http://127.0.0.1:8000/ask/stream?question=What%20is%20a%20bandwidth%20p
 
 ```bash
 pip install -r requirements-dev.txt
-pytest          # 129 tests, about 5 seconds
+pytest          # 146 tests, about 5 seconds
 ruff check .    # linting
 ```
 
@@ -146,3 +146,47 @@ runs the linter and all tests on every push (`.github/workflows/ci.yml`).
 
 The full evaluation (step 5) needs the PDFs, the real models and LLM API
 quota, so it is run manually rather than on every push.
+
+## Step 8: Docker and deployment
+
+**Live demo:** hosted free on Streamlit Community Cloud (`streamlit_app.py`).
+**Docker image:** the FastAPI service (`Dockerfile`), built and smoke-tested by GitHub Actions on every push.
+
+### Running on a small free server
+
+Free hosting gives roughly 0.5-1 GB of memory, so the app was slimmed down
+without changing what it retrieves:
+
+| Change | Effect |
+|---|---|
+| Models run on **ONNX Runtime** (fastembed) instead of PyTorch | Same two models; no 800 MB PyTorch install, far less memory |
+| **Compact BM25** (inverted index in numpy arrays) instead of `rank_bm25` | Identical rankings on all 68 eval questions; keyword index memory 76 MB -> 23 MB; ~40x faster per query |
+
+The whole app (without the models) peaks at about 230 MB.
+
+### Deploying
+
+1. Rebuild the index with the ONNX models and publish it to a free Hugging Face dataset
+   (put a Hugging Face WRITE token in `.env` as `HF_TOKEN=...`):
+
+   ```bash
+   python -m telecomdocqa.index_builder
+   python deploy/publish_index.py
+   ```
+
+2. On [share.streamlit.io](https://share.streamlit.io), create an app from this GitHub repository
+   (main file `streamlit_app.py`, Python 3.12) and add the secret `LLM_API_KEY = "..."`.
+   On first start the app downloads the index from Hugging Face.
+
+3. To run the FastAPI service in Docker instead:
+
+   ```bash
+   docker build -t telecomdocqa .
+   docker run -p 7860:7860 --env-file .env telecomdocqa       # then open http://localhost:7860
+   ```
+
+### Protecting the free LLM quota
+
+Groq's free tier allows only about 60 questions a day, so both the API and the
+demo answer repeated questions from an in-memory LRU cache, and limit new
+questions to 10 per visitor per hour and 50 per day in total.

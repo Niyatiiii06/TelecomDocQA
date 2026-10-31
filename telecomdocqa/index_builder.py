@@ -3,10 +3,11 @@
 Run once after step 1 (and again whenever the chunks change):
     python -m telecomdocqa.index_builder
 
-On a laptop CPU this takes roughly 5-15 minutes for ~7,700 chunks.
+On a laptop CPU this takes roughly 5-10 minutes for ~7,700 chunks.
 """
 
 import json
+import shutil
 import time
 
 import chromadb
@@ -21,6 +22,8 @@ ADD_BATCH_SIZE = 500  # how many chunks we send to Chroma at once
 def open_collection(create_new=False):
     """Open the Chroma collection on disk. With create_new=True, any old
     index is deleted first so we never mix old and new chunks."""
+    if create_new and config.CHROMA_DIR.exists():
+        shutil.rmtree(config.CHROMA_DIR)  # start from an empty folder, no leftovers from old indexes
     client = chromadb.PersistentClient(path=str(config.CHROMA_DIR))
     if create_new:
         existing = [c.name for c in client.list_collections()]
@@ -73,7 +76,7 @@ def main():
     minutes = (time.time() - start_time) / 60
 
     # Save what the index was built from, so we can spot an out-of-date index.
-    info = {"embedding_model": embedder.model_name, "num_chunks": count}
+    info = {"embedding_model": embedder.model_name, "backend": config.EMBEDDING_BACKEND, "num_chunks": count}
     config.INDEX_INFO_PATH.write_text(json.dumps(info, indent=2), encoding="utf-8")
     print(f"Indexed {count} chunks in {minutes:.1f} min -> {config.CHROMA_DIR}")
 

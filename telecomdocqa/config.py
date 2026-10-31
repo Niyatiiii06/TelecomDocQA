@@ -34,8 +34,10 @@ CHROMA_DIR = INDEX_DIR / "chroma"
 INDEX_INFO_PATH = INDEX_DIR / "index_info.json"
 COLLECTION_NAME = "telecom_chunks"
 
-# Small, fast embedding model that does well on retrieval benchmarks.
-# It runs fine on a laptop CPU (384-dimensional vectors).
+# Small, fast embedding model that does well on retrieval benchmarks
+# (384-dimensional vectors). Both models run with ONNX Runtime (fastembed),
+# which needs far less memory than PyTorch, and are downloaded once to here:
+MODEL_CACHE_DIR = PROJECT_ROOT / ".model_cache"
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 # BGE models work best when the *query* (not the documents) has this prefix.
 QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
@@ -50,8 +52,10 @@ TOP_K = 5
 # ---------------- Step 3: reranking ----------------
 # A cross-encoder reads the question and a chunk *together* and scores how
 # well the chunk answers it. This small model (22M parameters) is fast on a
-# laptop CPU. A stronger but ~10x slower option is "BAAI/bge-reranker-base".
-RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+# CPU. It is the ONNX version of cross-encoder/ms-marco-MiniLM-L-6-v2.
+RERANKER_MODEL = "Xenova/ms-marco-MiniLM-L-6-v2"
+# Recorded in index_info.json, so an index built with the old PyTorch models is detected.
+EMBEDDING_BACKEND = "onnx"
 # How many hybrid results we pass to the reranker. More = better recall but
 # slower, because the cross-encoder runs once per candidate.
 RERANK_CANDIDATES = 20
@@ -94,3 +98,15 @@ JUDGE_MAX_TOKENS = 3000
 
 # ---------------- Step 6: API ----------------
 STATIC_DIR = Path(__file__).resolve().parent / "static"   # the demo web page
+
+# ---------------- Step 8: deployment ----------------
+# The prebuilt index is published to this free Hugging Face dataset repository
+# (deploy/publish_index.py) and downloaded by servers (remote_index.py).
+INDEX_REPO = os.getenv("INDEX_REPO", "Niyawwtiiii/telecomdocqa-index")
+
+# Public demo limits
+# One question uses ~3,000 LLM tokens and Groq's free tier allows ~200,000 a
+# day, so the demo is capped below that. Change these with environment variables.
+RATE_LIMIT_PER_HOUR = int(os.getenv("RATE_LIMIT_PER_HOUR", "10"))   # new questions per visitor per hour
+DAILY_QUESTION_LIMIT = int(os.getenv("DAILY_QUESTION_LIMIT", "50"))  # new questions per day, all visitors
+ANSWER_CACHE_SIZE = 256                                                 # repeated questions cost nothing

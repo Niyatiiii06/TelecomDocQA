@@ -12,9 +12,12 @@ Every retriever accepts the same `filters` dict, e.g.
 Any key can be left out. "section": "5.2" matches 5.2, 5.2.1, 5.2.3.4 ...
 """
 
+import math
 import re
+from array import array
+from collections import Counter, defaultdict
 
-from rank_bm25 import BM25Okapi
+import numpy as np
 
 from telecomdocqa import config
 
@@ -59,12 +62,71 @@ def matches_filters(chunk, filters):
     return True
 
 
+class BM25Index:
+    """BM25 (Okapi) keyword scoring with an inverted index.
+
+    For each word we store which chunks contain it and how often, as two
+    small numpy arrays. Scoring a query only touches the chunks that contain
+    its words. This gives exactly the same scores as the rank_bm25 library
+    (BM25Okapi, k1=1.5, b=0.75, epsilon=0.25), but uses about 10x less memory,
+    because rank_bm25 keeps a separate word-count dictionary for every chunk.
+
+    For one word in one chunk:
+        idf(word) * tf * (k1 + 1) / (tf + k1 * (1 - b + b * chunk_length / average_length))
+    where tf = how often the word appears in the chunk, and idf is high for
+    rare words and low for common ones ("amf" counts less than "s-nssai").
+    """
+
+    def __init__(self, tokenized_docs, k1=1.5, b=0.75, epsilon=0.25):
+        """`tokenized_docs` can be a generator, so the word lists of all
+        chunks never have to be in memory at the same time."""
+        self.k1, self.b = k1, b
+
+        # word -> (chunk numbers, counts). array() stores numbers compactly
+        # (4 bytes each), unlike a Python list (about 36 bytes each).
+        postings = defaultdict(lambda: (array("i"), array("f")))
+        lengths = array("f")
+        for doc_number, doc in enumerate(tokenized_docs):
+            lengths.append(len(doc))
+            for word, count in Counter(doc).items():
+                postings[word][0].append(doc_number)
+                postings[word][1].append(count)
+
+        self.n_docs = len(lengths)
+        self.doc_lengths = np.array(lengths, dtype=np.float32)
+        self.avg_length = float(self.doc_lengths.mean()) if self.n_docs else 0.0
+        self.postings = {
+            word: (np.array(docs, dtype=np.int32), np.array(counts, dtype=np.float32))
+            for word, (docs, counts) in postings.items()
+        }
+
+        # idf, with rank_bm25's rule for very common words: an idf below zero
+        # is replaced by a small positive value (epsilon * average idf).
+        self.idf = {
+            word: math.log(self.n_docs - len(docs) + 0.5) - math.log(len(docs) + 0.5)
+            for word, (docs, _) in self.postings.items()
+        }
+        floor = epsilon * (sum(self.idf.values()) / len(self.idf)) if self.idf else 0.0
+        self.idf = {word: (idf if idf >= 0 else floor) for word, idf in self.idf.items()}
+
+    def get_scores(self, query_words):
+        """One score per chunk (0 for chunks without any query word)."""
+        scores = np.zeros(self.n_docs, dtype=np.float64)
+        for word in query_words:
+            if word not in self.postings:
+                continue
+            docs, counts = self.postings[word]
+            length_norm = 1 - self.b + self.b * self.doc_lengths[docs] / self.avg_length
+            scores[docs] += self.idf[word] * counts * (self.k1 + 1) / (counts + self.k1 * length_norm)
+        return scores
+
+
 class BM25Retriever:
     """Keyword search. Built in memory from the chunks (takes a few seconds)."""
 
     def __init__(self, chunks):
         self.chunks = chunks
-        self.bm25 = BM25Okapi([tokenize(chunk_to_text(c)) for c in chunks])
+        self.bm25 = BM25Index(tokenize(chunk_to_text(c)) for c in chunks)
 
     def search(self, query, k=config.CANDIDATES_PER_RETRIEVER, filters=None):
         """Return a list of (chunk_id, score), best first."""

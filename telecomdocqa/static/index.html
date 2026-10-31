@@ -164,7 +164,7 @@
       const result = JSON.parse(e.data);
       answerBox.innerHTML = formatAnswer(result.answer);  // final, citations checked
       result.citations.forEach(c => document.getElementById(`source-${c.number}`)?.classList.add("cited"));
-      statusBox.textContent = `Answered in ${result.total_seconds.toFixed(1)} s` +
+      statusBox.textContent = (result.cached ? "Answered instantly (cached)" : `Answered in ${result.total_seconds.toFixed(1)} s`) +
         (result.invalid_citations.length ? ` · warning: cited missing sources ${result.invalid_citations.join(", ")}` : "");
       if (result.invalid_citations.length) statusBox.className = "warn";
       finish();
