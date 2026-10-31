@@ -1,0 +1,7 @@
+# Linting rules checked in CI.
+# E/W = basic style, F = real mistakes (unused imports, undefined names), I = import order.
+line-length = 120
+
+[lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]  # long lines are allowed (some prompts and tables read better on one line)

@@ -13,7 +13,6 @@ Run from the project root:
 """
 
 import argparse
-
 import json
 import time
 from datetime import datetime

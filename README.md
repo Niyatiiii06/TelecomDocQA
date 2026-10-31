@@ -125,3 +125,24 @@ curl -X POST http://127.0.0.1:8000/ask -H "Content-Type: application/json" \
      -d '{"question": "What is the role of the AMF?", "topic": "architecture"}'
 curl -N "http://127.0.0.1:8000/ask/stream?question=What%20is%20a%20bandwidth%20part%3F"
 ```
+
+## Step 7: Tests and continuous integration
+
+```bash
+pip install -r requirements-dev.txt
+pytest          # 129 tests, about 5 seconds
+ruff check .    # linting
+```
+
+The tests cover every stage: PDF cleaning and section detection, chunking,
+BM25 / dense / hybrid retrieval and filters (on a real ChromaDB index in a
+temporary folder), reranking, citation clean-up and checking, the evaluation
+metrics, the API (validation, streaming, error handling) and the evaluation
+set itself (valid gold labels, unique ids).
+
+They use small fake models with the same interface as the real ones, so they
+run in seconds with no API key, no model downloads and no PDFs. GitHub Actions
+runs the linter and all tests on every push (`.github/workflows/ci.yml`).
+
+The full evaluation (step 5) needs the PDFs, the real models and LLM API
+quota, so it is run manually rather than on every push.

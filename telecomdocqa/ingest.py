@@ -78,7 +78,7 @@ def read_toc(pages):
     """
     toc = {}
     for page_text in pages:
-        lines = [" ".join(l.split()) for l in page_text.splitlines() if l.strip()]
+        lines = [" ".join(raw.split()) for raw in page_text.splitlines() if raw.strip()]
         for i, line in enumerate(lines):
             if not TOC_RE.search(line):
                 continue
