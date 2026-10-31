@@ -65,13 +65,20 @@ def normalize_citations(text):
     return text
 
 
+# 3GPP specs refer to other documents by number: "as defined in TS 23.003 [19]"
+# means reference 19 in the spec's own reference list, not our source [19].
+# Models sometimes copy these, so we ignore a [n] that follows a document name.
+SPEC_REFERENCE_RE = re.compile(r"\b(?:TS|TR|RFC|IEEE)\s*[\d.\-]*\d\s*\[\d+\]")
+
+
 def extract_citations(answer_text, chunks):
     """Find every [n] in the answer and match it to its source chunk.
 
-    Returns (citations, invalid_numbers). A citation like [7] when we only
-    gave 5 sources is invalid: the model made it up, so we report it.
+    Returns (citations, invalid_numbers). A citation like [9] when we only
+    gave 8 sources is invalid: the model made it up, so we report it.
     """
-    numbers = sorted({int(n) for n in re.findall(r"\[(\d+)\]", answer_text)})
+    text = SPEC_REFERENCE_RE.sub("", answer_text)  # drop "TS 23.003 [19]" style references
+    numbers = sorted({int(n) for n in re.findall(r"\[(\d+)\]", text)})
     citations = []
     invalid = []
     for n in numbers:
