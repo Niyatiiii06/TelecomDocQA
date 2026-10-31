@@ -91,3 +91,6 @@ EVAL_RESULTS_DIR = EVAL_DIR / "results"
 JUDGE_MODEL = os.getenv("JUDGE_MODEL", "qwen/qwen3.8-27b")
 JUDGE_REASONING_EFFORT = os.getenv("JUDGE_REASONING_EFFORT", "")  # "" = provider default
 JUDGE_MAX_TOKENS = 3000
+
+# ---------------- Step 6: API ----------------
+STATIC_DIR = Path(__file__).resolve().parent / "static"   # the demo web page

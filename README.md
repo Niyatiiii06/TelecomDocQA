@@ -99,3 +99,29 @@ python -m telecomdocqa.eval_answers                # full run (use --resume if i
 Correctness and faithfulness are graded by an LLM judge (`qwen/qwen3.8-27b`)
 that is a different model from the answer model, to avoid self-grading bias.
 Reports are saved to `data/eval/results/`.
+
+## Step 6: FastAPI service with streaming
+
+```bash
+uvicorn telecomdocqa.api:app --reload
+```
+
+Then open http://127.0.0.1:8000 for the demo page, or http://127.0.0.1:8000/docs
+for interactive API documentation.
+
+| Endpoint | What it does |
+|---|---|
+| `GET /health` | Service status and the models in use |
+| `POST /search` | Retrieval only (no LLM): the top chunks for a question |
+| `POST /ask` | The full answer with checked citations, as one JSON response |
+| `GET /ask/stream` | The same answer streamed with Server-Sent Events: sources first, then the answer word by word, then the checked citations |
+
+- **Validation:** Pydantic rejects bad requests with a clear 422 error (question length, unknown spec or topic, malformed section numbers).
+- **Models load once** at startup (FastAPI lifespan), not on every request.
+- **LLM errors** (e.g. the provider's rate limit) return 429 or 502 with a readable message; in a stream they arrive as an `error` event.
+
+```bash
+curl -X POST http://127.0.0.1:8000/ask -H "Content-Type: application/json" \
+     -d '{"question": "What is the role of the AMF?", "topic": "architecture"}'
+curl -N "http://127.0.0.1:8000/ask/stream?question=What%20is%20a%20bandwidth%20part%3F"
+```

@@ -67,8 +67,19 @@ def normalize_citations(text):
 
 # 3GPP specs refer to other documents by number: "as defined in TS 23.003 [19]"
 # means reference 19 in the spec's own reference list, not our source [19].
-# Models sometimes copy these, so we ignore a [n] that follows a document name.
-SPEC_REFERENCE_RE = re.compile(r"\b(?:TS|TR|RFC|IEEE)\s*[\d.\-]*\d\s*\[\d+\]")
+# Models sometimes copy these, so a [n] right after a document name is
+# ignored, unless source n really is from that document ("TS 38.300 [3]"
+# where our source [3] is from TS 38.300 is a genuine citation).
+SPEC_REFERENCE_RE = re.compile(r"\b((?:TS|TR|RFC|IEEE)\s*[\d.\-]*\d)\s*\[(\d+)\]")
+
+
+def remove_spec_references(text, chunks):
+    def replace(match):
+        document, n = match.group(1), int(match.group(2))
+        if 1 <= n <= len(chunks) and " ".join(document.split()) == chunks[n - 1]["spec"]:
+            return match.group(0)  # genuine citation of our source n
+        return document  # the spec's own reference number: drop it
+    return SPEC_REFERENCE_RE.sub(replace, text)
 
 
 def extract_citations(answer_text, chunks):
@@ -77,7 +88,7 @@ def extract_citations(answer_text, chunks):
     Returns (citations, invalid_numbers). A citation like [9] when we only
     gave 8 sources is invalid: the model made it up, so we report it.
     """
-    text = SPEC_REFERENCE_RE.sub("", answer_text)  # drop "TS 23.003 [19]" style references
+    text = remove_spec_references(answer_text, chunks)
     numbers = sorted({int(n) for n in re.findall(r"\[(\d+)\]", text)})
     citations = []
     invalid = []
@@ -135,6 +146,39 @@ class AnswerGenerator:
             "invalid_citations": invalid,
             "sources": chunks,
             "retrieval_seconds": round(retrieval_seconds, 3),
+            "total_seconds": round(time.perf_counter() - start, 3),
+        }
+
+    def stream_answer(self, question, filters=None):
+        """Same as answer(), but yields events as they happen, so a user
+        sees the sources at once and the answer appearing word by word.
+
+        Yields (event_name, data) pairs:
+          ("sources", [...])  the chunks the answer will use
+          ("token", "...")    the next piece of the answer text
+          ("done", {...})     the full checked answer and its citations
+        """
+        start = time.perf_counter()
+        chunks = self.retrieve(question, filters)
+        yield "sources", chunks
+
+        if chunks:
+            pieces = []
+            for piece in self.llm.chat_stream(build_messages(question, chunks)):
+                pieces.append(piece)
+                yield "token", piece
+            # Citations can only be checked once the whole answer exists.
+            answer_text = normalize_citations("".join(pieces).strip())
+        else:
+            answer_text = config.NOT_FOUND_MESSAGE
+            yield "token", answer_text
+
+        citations, invalid = extract_citations(answer_text, chunks)
+        yield "done", {
+            "answer": answer_text,
+            "found_answer": config.NOT_FOUND_MESSAGE not in answer_text,
+            "citations": citations,
+            "invalid_citations": invalid,
             "total_seconds": round(time.perf_counter() - start, 3),
         }
 
