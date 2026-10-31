@@ -49,8 +49,8 @@ by an LLM judge from a different model family.
 
 | Metric | Result |
 |---|---|
-| Recall@5 (right section in the top 5) | **0.93** (hybrid alone: 0.81) |
-| MRR@10 | **0.81** |
+| Recall@5 (right section in the top 5) | **0.91** (hybrid alone: 0.83) |
+| MRR@10 | **0.80** |
 | Answer correctness | **0.85** (0.78 with 5 sources instead of 8) |
 | Faithfulness (claims supported by sources) | **0.94** |
 | Out-of-scope questions refused | **10 / 10** |
@@ -66,9 +66,9 @@ Full reports, including the BM25 / dense / hybrid comparison: [`data/eval/result
 
 ## Known limitations
 
-- Two broad questions (e.g. "Which function allocates IP addresses?") miss the right section entirely.
+- Three questions (e.g. "Which function allocates IP addresses?") miss the right section in the top 10.
 - PDF tables are flattened into plain text, so table-based questions are answered poorly.
-- The test questions were drafted with AI assistance and are being reviewed by hand.
+- The test questions were drafted with AI assistance; every reference answer was then checked against the spec text.
 
 ## Tech stack
 

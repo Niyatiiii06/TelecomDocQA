@@ -54,16 +54,19 @@ Gold labels are sections, not chunk IDs, so the set stays valid if the chunking 
 
 ### Retrieval ablation (58 answerable questions)
 
+Measured after the q58 gold-label fix (see [`data/eval/README.md`](data/eval/README.md)).
+
+
 | Setup | Recall@1 | Recall@5 | Recall@10 | MRR@10 | p50 latency |
 |---|---|---|---|---|---|
 | BM25 only | 0.47 | 0.69 | 0.76 | 0.57 | 2 ms |
-| Dense only | 0.66 | 0.90 | 0.91 | 0.75 | 11 ms |
-| Hybrid (RRF) | 0.57 | 0.81 | 0.88 | 0.66 | 14 ms |
-| **Hybrid + rerank** | **0.72** | **0.93** | **0.97** | **0.81** | 1.4 s |
+| Dense only | 0.64 | 0.88 | 0.91 | 0.74 | 11 ms |
+| Hybrid (RRF) | 0.57 | 0.83 | 0.88 | 0.66 | 14 ms |
+| **Hybrid + rerank** | **0.72** | **0.91** | **0.95** | **0.80** | 1.5 s |
 
-- Reranking adds +0.12 Recall@5 and +0.15 MRR over plain hybrid retrieval.
+- Reranking adds +0.08 Recall@5 and +0.14 MRR over plain hybrid retrieval.
 - Plain RRF scores *below* dense alone: BM25's weaker list pulls good dense results down. The reranker recovers them, because it rescores every candidate on its own merits.
-- Reranking more candidates didn't help: 20, 30 and 40 candidates all gave Recall@5 0.93, while p50 search latency rose from 1.0 s to 2.0 s (measured with the earlier PyTorch build). The system keeps 20.
+- Reranking more candidates didn't help: 20, 30 and 40 candidates all gave the same Recall@5, while p50 search latency rose from 1.0 s to 2.0 s (measured with the earlier PyTorch build, before the q58 label fix). The system keeps 20.
 
 ### Answer quality (LLM-as-judge)
 
@@ -80,7 +83,7 @@ model, to avoid a model grading its own answers.
 | Refusals on unanswerable questions | 10/10 | **10/10** |
 | End-to-end latency p50 / p95 | 2.1 s / 2.6 s | 2.1 s / 2.9 s |
 
-Recall@8 (0.97) was higher than Recall@5 (0.93), so the LLM gets 8 sources: questions
+Recall@8 was higher than Recall@5 (0.97 vs 0.93 when measured, before the q58 label fix), so the LLM gets 8 sources: questions
 whose gold section ranked 6th to 8th now reach the LLM (q01 went from refused to correct). Citation precision
 fell because answers also cite related sections that aren't labelled gold, so it is a
 lower bound. Full reports: [`data/eval/results/`](data/eval/results/).
