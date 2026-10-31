@@ -44,6 +44,11 @@ SECTION_RE = re.compile(r"^[A-Z0-9]{1,2}(\.\d{1,3}){0,6}$")
 
 st.set_page_config(page_title="TelecomDocQA", page_icon="📡", layout="centered")
 
+if not config.LLM_API_KEY:
+    st.error("No LLM API key found. On Streamlit Community Cloud, open the app's Settings > Secrets and add a line "
+             'like LLM_API_KEY = "gsk_..." (with the quotes), then reboot the app. Locally, put it in your .env file.')
+    st.stop()
+
 
 # st.cache_resource runs a function once per server and shares the result
 # with every visitor: the models load once, not on every click.

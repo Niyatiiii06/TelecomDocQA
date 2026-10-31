@@ -8,6 +8,7 @@ from streamlit.testing.v1 import AppTest
 
 import telecomdocqa.answer
 import telecomdocqa.remote_index
+from telecomdocqa import config
 from telecomdocqa.answer import AnswerGenerator
 
 from .conftest import FakeLLM
@@ -21,6 +22,7 @@ def fake_backend(chunks, monkeypatch):
     llm = FakeLLM("The AMF handles registration [1].")
     monkeypatch.setattr(telecomdocqa.answer, "load_answer_generator", lambda: AnswerGenerator(FakePipeline(chunks), llm))
     monkeypatch.setattr(telecomdocqa.remote_index, "ensure_index", lambda: False)
+    monkeypatch.setattr(config, "LLM_API_KEY", "test-key")
     yield llm
     import streamlit as st
     st.cache_resource.clear()  # each test starts with an empty cache and fresh limits
@@ -64,3 +66,10 @@ def test_bad_section_is_rejected(fake_backend):
     app.text_input[0].set_value("5.2; DROP")
     app = ask(app, "What does the AMF do?")
     assert app.warning and "section number" in app.warning[0].value
+
+
+def test_missing_api_key_shows_a_clear_message(fake_backend, monkeypatch):
+    monkeypatch.setattr(config, "LLM_API_KEY", "")
+    app = AppTest.from_file(APP).run(timeout=30)
+    assert not app.exception
+    assert "No LLM API key" in app.error[0].value
