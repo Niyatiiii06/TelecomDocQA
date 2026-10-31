@@ -9,7 +9,10 @@ best rerank score separates answerable from unanswerable questions.
 
 Run from the project root:
     python -m telecomdocqa.eval_retrieval
+    python -m telecomdocqa.eval_retrieval --candidates 20 30 40   # how many chunks to rerank
 """
+
+import argparse
 
 import json
 import time
@@ -37,12 +40,12 @@ def load_questions(path=config.EVAL_QUESTIONS_PATH):
     return questions
 
 
-def evaluate_setup(pipeline, questions, mode, rerank):
+def evaluate_setup(pipeline, questions, mode, rerank, n_candidates=None):
     """Run every answerable question through one set-up."""
     rows = []
     for q in questions:
         start = time.perf_counter()
-        results = pipeline.search(q["question"], top_k=TOP_K, mode=mode, rerank=rerank)
+        results = pipeline.search(q["question"], top_k=TOP_K, mode=mode, rerank=rerank, n_candidates=n_candidates)
         seconds = time.perf_counter() - start
         rows.append({
             "id": q["id"],
@@ -50,6 +53,7 @@ def evaluate_setup(pipeline, questions, mode, rerank):
             "first_relevant_rank": first_relevant_rank(results, q["gold"]),
             "recall@1": recall_at_k(results, q["gold"], 1),
             "recall@5": recall_at_k(results, q["gold"], 5),
+            "recall@8": recall_at_k(results, q["gold"], 8),
             "recall@10": recall_at_k(results, q["gold"], 10),
             "rr": reciprocal_rank(results, q["gold"]),
             "seconds": seconds,
@@ -62,6 +66,7 @@ def summarize(rows):
     return {
         "recall@1": mean([r["recall@1"] for r in rows]),
         "recall@5": mean([r["recall@5"] for r in rows]),
+        "recall@8": mean([r["recall@8"] for r in rows]),
         "recall@10": mean([r["recall@10"] for r in rows]),
         "mrr@10": mean([r["rr"] for r in rows]),
         "p50_ms": percentile([r["seconds"] for r in rows], 50) * 1000,
@@ -120,12 +125,41 @@ def format_report(summaries, topic_recall, threshold_info, n_questions):
     return "\n".join(lines) + "\n"
 
 
+def compare_candidates(pipeline, answerable, counts):
+    """Experiment: how many hybrid results should the reranker see?
+    More candidates = more chances to find the right chunk, but slower."""
+    lines = [
+        "| Chunks reranked | Recall@1 | Recall@5 | Recall@8 | Recall@10 | MRR@10 | p50 latency | p95 latency |",
+        "|---|---|---|---|---|---|---|---|",
+    ]
+    for n in counts:
+        print(f"Evaluating: rerank {n} candidates ...")
+        s = summarize(evaluate_setup(pipeline, answerable, "hybrid", True, n_candidates=n))
+        lines.append(
+            f"| {n} | {s['recall@1']:.2f} | {s['recall@5']:.2f} | {s['recall@8']:.2f} | {s['recall@10']:.2f} | "
+            f"{s['mrr@10']:.2f} | {s['p50_ms']:.0f} ms | {s['p95_ms']:.0f} ms |"
+        )
+    return "# Experiment: number of chunks reranked\n\n" + "\n".join(lines) + "\n"
+
+
 def main():
     from telecomdocqa.pipeline import load_pipeline
+
+    parser = argparse.ArgumentParser(description="Evaluate retrieval.")
+    parser.add_argument("--candidates", type=int, nargs="+",
+                        help="only run the experiment comparing these numbers of reranked chunks")
+    args = parser.parse_args()
 
     questions = load_questions()
     answerable = [q for q in questions if q["answerable"]]
     pipeline = load_pipeline()
+
+    if args.candidates:
+        report = compare_candidates(pipeline, answerable, args.candidates)
+        print("\n" + report)
+        config.EVAL_RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+        (config.EVAL_RESULTS_DIR / "experiment_candidates.md").write_text(report, encoding="utf-8")
+        return
 
     all_rows, summaries = {}, {}
     for name, mode, rerank in SETUPS:

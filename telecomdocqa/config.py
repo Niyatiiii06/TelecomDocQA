@@ -71,7 +71,9 @@ LLM_MAX_TOKENS = 2000       # upper limit on thinking + answer length
 LLM_MAX_RETRIES = 6         # free tiers have per-minute limits; the client waits and retries
 
 # How many reranked chunks we give the LLM as sources.
-ANSWER_TOP_K = 5
+# Experiment (step 5): Recall@5 = 0.93 but Recall@8 = 0.97, so 8 sources
+# lets the LLM see the right section for 2 more of the 58 questions.
+ANSWER_TOP_K = 8
 # If even the best chunk scores below this, we say "not found" without
 # calling the LLM (e.g. for "What's the best pizza in Delhi?").
 # Tuned on the evaluation set (step 5): every answerable question's best

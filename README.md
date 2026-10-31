@@ -70,8 +70,8 @@ python -m telecomdocqa.answer "How is the SUPI protected over the air?" --topic 
 python -m telecomdocqa.answer "What is the best pizza in Delhi?"   # should say "not found"
 ```
 
-The LLM (`openai/gpt-oss-120b` on Groq's free tier) only sees the top 5
-reranked chunks, numbered [1]-[5], and must cite a number after every fact.
+The LLM (`openai/gpt-oss-120b` on Groq's free tier) only sees the top 8
+reranked chunks, numbered [1]-[8], and must cite a number after every fact.
 Each citation is checked and mapped back to its spec, section and pages;
 citations to sources that don't exist are flagged. If the best chunk's
 rerank score is too low, the system answers "not found" without calling the

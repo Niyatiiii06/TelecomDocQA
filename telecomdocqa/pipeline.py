@@ -12,7 +12,7 @@ class SearchPipeline:
         self.retriever = retriever
         self.reranker = reranker
 
-    def search(self, query, top_k=config.TOP_K, filters=None, mode="hybrid", rerank=True):
+    def search(self, query, top_k=config.TOP_K, filters=None, mode="hybrid", rerank=True, n_candidates=None):
         """Return the top_k chunks for the query.
 
         With rerank=True we first fetch RERANK_CANDIDATES chunks, let the
@@ -21,7 +21,10 @@ class SearchPipeline:
         so you can see how much the reranker moved it.
         """
         use_reranker = rerank and self.reranker is not None
-        n_candidates = max(config.RERANK_CANDIDATES, top_k) if use_reranker else top_k
+        if use_reranker:
+            n_candidates = max(n_candidates or config.RERANK_CANDIDATES, top_k)
+        else:
+            n_candidates = top_k
 
         candidates = self.retriever.search(query, top_k=n_candidates, filters=filters, mode=mode)
         for position, chunk in enumerate(candidates, start=1):
